@@ -1,1 +1,24 @@
-body { background-color: black; color: white; }
+body {
+    background-color: #000;
+    color: #0f0;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+header, footer {
+    text-align: center;
+    padding: 1rem;
+}
+.productos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    padding: 2rem;
+}
+.producto {
+    background: #111;
+    border: 1px solid #0f0;
+    padding: 1rem;
+    text-align: center;
+    border-radius: 8px;
+}
