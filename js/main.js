@@ -1,0 +1,1 @@
+console.log('DËLIRIUM 3D funcionando');
