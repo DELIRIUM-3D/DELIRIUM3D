@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Productos | DËLIRIUM 3D</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <script src="../js/includeHTML.js"></script>
+</head>
+<body onload="includeHTML()">
+
+  <div w3-include-html="../componentes/header.html"></div>
+
+  <main style="padding: 2rem;">
+    <h2>Catálogo de productos</h2>
+    <div class="productos-grid">
+      <div class="producto">
+        <img src="../assets/img/funko-ejemplo.jpg" alt="Funko" />
+        <h4>Funko personalizado</h4>
+        <p>Desde 24,99 €</p>
+        <button class="boton">Añadir al carrito</button>
+      </div>
+      <div class="producto">
+        <img src="../assets/img/cartel-led.jpg" alt="Cartel LED" />
+        <h4>Cartel LED</h4>
+        <p>19,99 €</p>
+        <button class="boton">Añadir al carrito</button>
+      </div>
+      <!-- Más productos -->
+    </div>
+  </main>
+
+  <div w3-include-html="../componentes/footer.html"></div>
+</body>
+</html>
