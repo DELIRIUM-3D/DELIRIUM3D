@@ -1,0 +1,1 @@
+// animación de entrada con salto por clic o scroll
