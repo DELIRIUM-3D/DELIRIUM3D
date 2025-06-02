@@ -5,13 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DËLIRIUM 3D - Impresiones 3D personalizadas</title>
   <link rel="stylesheet" href="css/style.css" />
-  <link rel="icon" type="assets/logo.jpg" href="assets/logo.jpg" />
-  <script src="js/includeHTML.js"></script> <!-- NUEVO: Script para cargar componentes -->
+  <link rel="icon" type="image/png" href="assets/img/logo.png" />
+
+  <!-- Script para incluir componentes HTML como header y footer -->
+  <script src="js/includeHTML.js"></script>
   <script src="js/main.js" defer></script>
 </head>
+
+<!-- Activa la carga de componentes al cargar el body -->
 <body onload="includeHTML()">
-  
-  <!-- NUEVO: Header externo -->
+
+  <!-- HEADER cargado desde /componentes/header.html -->
   <div w3-include-html="componentes/header.html"></div>
 
   <main>
@@ -57,10 +61,10 @@
     </section>
   </main>
 
-  <!-- NUEVO: Footer externo -->
+  <!-- FOOTER cargado desde /componentes/footer.html -->
   <div w3-include-html="componentes/footer.html"></div>
 
-  <!-- Botón WhatsApp -->
+  <!-- Botón WhatsApp flotante -->
   <a href="https://wa.me/34TU_NUMERO" class="whatsapp-float" target="_blank" aria-label="Contactar por WhatsApp">
     <img src="assets/img/whatsapp-icon.png" alt="WhatsApp" />
   </a>
