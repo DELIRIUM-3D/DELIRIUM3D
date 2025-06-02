@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contacto | DËLIRIUM 3D</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="js/includeHTML.js"></script>
+</head>
+<body onload="includeHTML()">
+
+  <div w3-include-html="componentes/header.html"></div>
+
+  <main style="padding: 2rem;">
+    <h2>Contacto</h2>
+    <p>Puedes enviarnos tus dudas o encargos usando el siguiente formulario:</p>
+
+    <form action="https://formsubmit.co/tuemail@example.com" method="POST" style="max-width: 500px; margin: auto;">
+      <input type="text" name="nombre" placeholder="Tu nombre" required style="width: 100%; padding: 0.5rem; margin: 0.5rem 0;" />
+      <input type="email" name="email" placeholder="Tu correo" required style="width: 100%; padding: 0.5rem; margin: 0.5rem 0;" />
+      <textarea name="mensaje" rows="5" placeholder="Escribe tu mensaje" required style="width: 100%; padding: 0.5rem; margin: 0.5rem 0;"></textarea>
+      <button type="submit" class="boton">Enviar</button>
+    </form>
+  </main>
+
+  <div w3-include-html="componentes/footer.html"></div>
+</body>
+</html>
