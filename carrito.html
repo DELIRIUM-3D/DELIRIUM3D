@@ -48,7 +48,7 @@
         contenedor.appendChild(div);
       });
 
-      let envio = total >= 50 ? 0 : 15;
+      let envio = total >= 50 ? 0 : 4,99;
       envioDiv.innerHTML = `<p>Envío: ${envio === 0 ? "Gratis" : envio.toFixed(2) + " €"}</p>`;
       totalDiv.innerHTML = `<h3>Total con envío: ${(total + envio).toFixed(2)} €</h3>`;
     }
@@ -67,7 +67,7 @@
 
     function realizarPago() {
       let total = carrito.reduce((acc, item) => acc + item.precio, 0);
-      let envio = total >= 50 ? 0 : 4.90;
+      let envio = total >= 50 ? 0 : 15;
       let totalFinal = (total + envio).toFixed(2);
       window.open(`https://www.paypal.me/noemigc10/${totalFinal}`, '_blank');
     }
