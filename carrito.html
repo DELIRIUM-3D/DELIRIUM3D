@@ -68,7 +68,7 @@
     function realizarPago() {
       let total = carrito.reduce((acc, item) => acc + item.precio, 0);
       let envio = total >= 50 ? 0 : 15;
-      let totalFinal = (total + envio).toFixed(2);
+      let totalFinal = (total + envio).toFixed(10);
       window.open(`https://www.paypal.me/noemigc10/${totalFinal}`, '_blank');
     }
 
