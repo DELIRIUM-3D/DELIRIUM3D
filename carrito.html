@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Carrito - DËLIRIUM 3D</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="js/includeHTML.js"></script>
+  <script src="js/carrito.js" defer></script>
+</head>
+<body onload="includeHTML(); mostrarCarrito();">
+  <div w3-include-html="componentes/header.html"></div>
+
+  <main style="padding: 2rem;">
+    <h2>Tu Carrito</h2>
+    <div id="carrito-contenido"></div>
+    <div id="carrito-total" style="margin-top: 1rem;"></div>
+    <button class="boton" onclick="vaciarCarrito()">Vaciar carrito</button>
+  </main>
+
+  <div w3-include-html="componentes/footer.html"></div>
+</body>
+</html>
