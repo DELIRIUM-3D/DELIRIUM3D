@@ -170,3 +170,7 @@ footer a:hover {
     font-size: 1.5rem;
   }
 }
+/* Oculta el ícono original de Google Translate */
+.goog-te-gadget-icon {
+  display: none !important;
+}
