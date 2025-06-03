@@ -5,8 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DËLIRIUM 3D - Impresiones 3D personalizadas</title>
   <link rel="stylesheet" href="css/style.css" />
-  <link rel="icon" type="assets/logo.jpg" href="assets/logo.jpg" />
+  <link rel="icon" type="image/png" href="assets/logo.jpg" />
   <script src="js/main.js" defer></script>
+  <script src="js/carrito.js" defer></script>
 </head>
 <body>
   <header>
@@ -14,14 +15,30 @@
       <img src="assets/logo.jpg" alt="Logo DËLIRIUM 3D" />
       <h1>DËLIRIUM 3D</h1>
     </div>
+
     <nav>
       <ul>
         <li><a href="index.html" class="active">Inicio</a></li>
         <li><a href="productos/productos.html">Productos</a></li>
         <li><a href="galeria.html">Galería</a></li>
         <li><a href="contacto.html">Contacto</a></li>
-        
       </ul>
+
+      <!-- REDES SOCIALES + CARRITO -->
+      <div class="header-icons" style="display: flex; align-items: center; gap: 10px; margin-left: 1rem;">
+        <a href="https://instagram.com/delirium3d" target="_blank" title="Instagram">
+          <img src="assets/instagram-icon.png" alt="Instagram" style="height: 24px;" />
+        </a>
+        <a href="https://tiktok.com/@delirium3d" target="_blank" title="TikTok">
+          <img src="assets/tiktok-icon.png" alt="TikTok" style="height: 24px;" />
+        </a>
+        <a href="https://facebook.com/delirium3d" target="_blank" title="Facebook">
+          <img src="assets/facebook-icon.png" alt="Facebook" style="height: 24px;" />
+        </a>
+        <a href="carrito.html" title="Tu carrito">
+          <img src="assets/carrito-icon.png" alt="Carrito" style="height: 24px;" />
+        </a>
+      </div>
     </nav>
   </header>
 
@@ -39,22 +56,19 @@
           <img src="assets/img/funko-ejemplo.jpg" alt="Funko personalizado" />
           <h4>Funko personalizado</h4>
           <p>Desde 30 €</p>
-          <button class="boton" onclick="agregarAlCarrito('Funko personalizado', 24.99)">Añadir al carrito</button>
-
+          <button class="boton" onclick="agregarAlCarrito('Funko personalizado', 30)">Añadir al carrito</button>
         </div>
         <div class="producto">
           <img src="assets/img/cartel-led.jpg" alt="Cartel LED" />
           <h4>Cartel LED Minecraft</h4>
           <p>30 €</p>
-          <button class="boton" onclick="agregarAlCarrito('Funko personalizado', 24.99)">Añadir al carrito</button>
-
+          <button class="boton" onclick="agregarAlCarrito('Cartel LED Minecraft', 30)">Añadir al carrito</button>
         </div>
         <div class="producto">
           <img src="assets/img/soporte-movil.jpg" alt="Soporte móvil" />
           <h4>Soporte móvil</h4>
           <p>30 €</p>
-          <button class="boton" onclick="agregarAlCarrito('Funko personalizado', 24.99)">Añadir al carrito</button>
-
+          <button class="boton" onclick="agregarAlCarrito('Soporte móvil', 30)">Añadir al carrito</button>
         </div>
       </div>
     </section>
