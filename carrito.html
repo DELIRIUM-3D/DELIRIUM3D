@@ -1,22 +1,78 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Carrito - DËLIRIUM 3D</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carrito de Compras - DËLIRIUM 3D</title>
   <link rel="stylesheet" href="css/style.css" />
-  <script src="js/includeHTML.js"></script>
   <script src="js/carrito.js" defer></script>
 </head>
-<body onload="includeHTML(); mostrarCarrito();">
-  <div w3-include-html="componentes/header.html"></div>
+<body>
+  <header>
+    <h1>Tu Carrito de Compras</h1>
+  </header>
 
   <main style="padding: 2rem;">
-    <h2>Tu Carrito</h2>
     <div id="carrito-contenido"></div>
+    <div id="carrito-envio" style="margin-top: 1rem;"></div>
     <div id="carrito-total" style="margin-top: 1rem;"></div>
+
     <button class="boton" onclick="vaciarCarrito()">Vaciar carrito</button>
+    <button class="boton" onclick="realizarPago()">Finalizar compra</button>
   </main>
 
-  <div w3-include-html="componentes/footer.html"></div>
+  <script>
+    let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+
+    function mostrarCarrito() {
+      const contenedor = document.getElementById('carrito-contenido');
+      const totalDiv = document.getElementById('carrito-total');
+      const envioDiv = document.getElementById('carrito-envio');
+      contenedor.innerHTML = '';
+
+      if (carrito.length === 0) {
+        contenedor.innerHTML = '<p>Tu carrito está vacío.</p>';
+        totalDiv.innerHTML = '';
+        envioDiv.innerHTML = '';
+        return;
+      }
+
+      let total = 0;
+      carrito.forEach((item, index) => {
+        total += item.precio;
+        const div = document.createElement('div');
+        div.innerHTML = `
+          <p><strong>${item.nombre}</strong> - ${item.precio.toFixed(2)} € 
+          <button onclick="eliminarDelCarrito(${index})">Eliminar</button></p>
+        `;
+        contenedor.appendChild(div);
+      });
+
+      let envio = total >= 50 ? 0 : 4.90;
+      envioDiv.innerHTML = `<p>Envío: ${envio === 0 ? "Gratis" : envio.toFixed(2) + " €"}</p>`;
+      totalDiv.innerHTML = `<h3>Total con envío: ${(total + envio).toFixed(2)} €</h3>`;
+    }
+
+    function eliminarDelCarrito(index) {
+      carrito.splice(index, 1);
+      localStorage.setItem('carrito', JSON.stringify(carrito));
+      mostrarCarrito();
+    }
+
+    function vaciarCarrito() {
+      carrito = [];
+      localStorage.setItem('carrito', JSON.stringify(carrito));
+      mostrarCarrito();
+    }
+
+    function realizarPago() {
+      let total = carrito.reduce((acc, item) => acc + item.precio, 0);
+      let envio = total >= 50 ? 0 : 4.90;
+      let totalFinal = (total + envio).toFixed(2);
+      window.open(`https://www.paypal.me/noemigc10/${totalFinal}`, '_blank');
+    }
+
+    document.addEventListener("DOMContentLoaded", mostrarCarrito);
+  </script>
 </body>
 </html>
