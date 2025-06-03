@@ -42,15 +42,15 @@
         total += item.precio;
         const div = document.createElement('div');
         div.innerHTML = `
-          <p><strong>${item.nombre}</strong> - ${item.precio.toFixed(2)} € 
+          <p><strong>${item.nombre}</strong> - ${item.precio.toFixed(15)} € 
           <button onclick="eliminarDelCarrito(${index})">Eliminar</button></p>
         `;
         contenedor.appendChild(div);
       });
 
       let envio = total >= 50 ? 0 : 4,99;
-      envioDiv.innerHTML = `<p>Envío: ${envio === 0 ? "Gratis" : envio.toFixed(2) + " €"}</p>`;
-      totalDiv.innerHTML = `<h3>Total con envío: ${(total + envio).toFixed(2)} €</h3>`;
+      envioDiv.innerHTML = `<p>Envío: ${envio === 0 ? "Gratis" : envio.toFixed(15) + " €"}</p>`;
+      totalDiv.innerHTML = `<h3>Total con envío: ${(total + envio).toFixed(15)} €</h3>`;
     }
 
     function eliminarDelCarrito(index) {
