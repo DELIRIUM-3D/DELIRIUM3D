@@ -3,35 +3,86 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Productos | DËLIRIUM 3D</title>
+  <title>Productos - DËLIRIUM 3D</title>
   <link rel="stylesheet" href="../css/style.css" />
-  <script src="../js/includeHTML.js"></script>
-</head>
-<body onload="includeHTML()">
+  <script src="../js/carrito.js" defer></script>
 
-  <div w3-include-html="../componentes/header.html"></div>
+  <!-- Traductor Google -->
+  <script>
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'es',
+        includedLanguages: 'es,en,fr',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      }, 'google_translate_element');
+    }
+  </script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</head>
+<body class="modo-oscuro">
+  <!-- Traductor visible -->
+  <div style="position: absolute; top: 10px; right: 10px; z-index: 9999;">
+    <img src="../assets/icono_idioma.png" alt="Idioma" onclick="document.getElementById('google_translate_element').style.display='inline-block'" style="height: 26px; cursor: pointer;" />
+    <div id="google_translate_element" style="display: none;"></div>
+  </div>
+
+  <header>
+    <div class="logo">
+      <img src="../assets/logo.jpg" alt="Logo DËLIRIUM 3D" />
+      <h1>DËLIRIUM 3D</h1>
+    </div>
+  </header>
 
   <main style="padding: 2rem;">
-    <h2>Catálogo de productos</h2>
+    <h2 style="text-align:center;">Todos los productos</h2>
+
     <div class="productos-grid">
       <div class="producto">
-        <img src="../assets/img/funko-ejemplo.jpg" alt="Funko" />
+        <img src="../assets/img/funko-ejemplo.jpg" alt="Funko personalizado" />
         <h4>Funko personalizado</h4>
         <p>Desde 30 €</p>
-       <button class="boton" onclick="agregarAlCarrito('Funko personalizado', 24.99)">Añadir al carrito</button>
-
+        <button class="boton" onclick="agregarAlCarrito('Funko personalizado', 30)">Añadir al carrito</button>
       </div>
+
       <div class="producto">
-        <img src="../assets/img/cartel-led.jpg" alt="Cartel LED" />
-        <h4>Cartel LED</h4>
+        <img src="../assets/img/cartel-led.jpg" alt="Cartel LED Minecraft" />
+        <h4>Cartel LED Minecraft</h4>
         <p>30 €</p>
-       <button class="boton" onclick="agregarAlCarrito('Funko personalizado', 24.99)">Añadir al carrito</button>
-
+        <button class="boton" onclick="agregarAlCarrito('Cartel LED Minecraft', 30)">Añadir al carrito</button>
       </div>
-      <!-- Más productos -->
+
+      <div class="producto">
+        <img src="../assets/producto1.jpg" alt="Shimmer Arcane" />
+        <h4>Shimmer Arcane</h4>
+        <p>30 €</p>
+        <button class="boton" onclick="agregarAlCarrito('Shimmer Arcane', 30)">Añadir al carrito</button>
+      </div>
+
+      <!-- Añade más productos aquí copiando este bloque -->
+      <!--
+      <div class="producto">
+        <img src="../assets/imagen.jpg" alt="Nombre" />
+        <h4>Nombre</h4>
+        <p>Precio €</p>
+        <button class="boton" onclick="agregarAlCarrito('Nombre', precio)">Añadir al carrito</button>
+      </div>
+      -->
     </div>
   </main>
 
-  <div w3-include-html="../componentes/footer.html"></div>
+  <footer>
+    <p>&copy; 2025 DËLIRIUM 3D. Todos los derechos reservados.</p>
+    <p><a href="../legal/privacy-policy.html">Política de privacidad</a> | <a href="../legal/terms-conditions.html">Términos y condiciones</a></p>
+  </footer>
+
+  <!-- WhatsApp flotante -->
+  <a href="https://wa.me/34727774427" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+    <img src="../assets/icono_whatsapp.png" alt="WhatsApp" />
+  </a>
+
+  <!-- Botón modo claro/oscuro -->
+  <button id="modo-toggle" onclick="document.body.classList.toggle('modo-claro')">
+    🌗 Modo claro/oscuro
+  </button>
 </body>
 </html>
