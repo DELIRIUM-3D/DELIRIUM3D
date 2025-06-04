@@ -206,6 +206,27 @@
     location.reload();
   });
 </script>
+<!-- 🔐 Botón oculto para reiniciar el carrito -->
+<button id="reset-carrito" style="position:fixed;bottom:150px;right:20px;display:none;background:#008000;color:#fff;padding:10px;border:none;border-radius:6px;z-index:9999;">
+  🛒 Reiniciar carrito
+</button>
+
+<script>
+  // Mostrar el botón si pulsas Shift + C
+  document.addEventListener("keydown", function (e) {
+    if (e.shiftKey && e.key === "C") {
+      const btn = document.getElementById("reset-carrito");
+      btn.style.display = btn.style.display === "none" ? "block" : "none";
+    }
+  });
+
+  // Función para borrar el carrito
+  document.getElementById("reset-carrito").addEventListener("click", () => {
+    localStorage.removeItem("carrito");
+    alert("🧹 Carrito eliminado.");
+    location.reload();
+  });
+</script>
 
 </body>
 </html>
