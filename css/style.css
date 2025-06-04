@@ -268,3 +268,16 @@ body.modo-claro .categorias h3 {
     height: 40px;
   }
 }
+/* ============================== */
+/* TRANSICIÓN SUAVE MODO OSCURO  */
+/* ============================== */
+body,
+header,
+footer,
+.producto,
+.categoria,
+.hero,
+nav ul li a,
+.boton {
+  transition: all 0.5s ease-in-out;
+}
