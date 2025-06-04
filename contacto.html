@@ -3,26 +3,77 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contacto | DËLIRIUM 3D</title>
+  <title>Contacto - DËLIRIUM 3D</title>
   <link rel="stylesheet" href="css/style.css" />
-  <script src="js/includeHTML.js"></script>
-</head>
-<body onload="includeHTML()">
 
-  <div w3-include-html="componentes/header.html"></div>
+  <!-- Traductor -->
+  <script>
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'es',
+        includedLanguages: 'es,en,fr',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      }, 'google_translate_element');
+    }
+  </script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</head>
+
+<body class="modo-oscuro">
+  <!-- Traductor -->
+  <div style="position: absolute; top: 10px; right: 10px; z-index: 9999;">
+    <img src="assets/icono_idioma.png" alt="Idioma" onclick="document.getElementById('google_translate_element').style.display='inline-block'" style="height: 26px; cursor: pointer;" />
+    <div id="google_translate_element" style="display: none;"></div>
+  </div>
+
+  <header>
+    <div class="logo">
+      <img src="assets/logo.jpg" alt="Logo DËLIRIUM 3D" />
+      <h1>DËLIRIUM 3D</h1>
+    </div>
+  </header>
 
   <main style="padding: 2rem;">
-    <h2>Contacto</h2>
-    <p>Puedes enviarnos tus dudas o encargos usando el siguiente formulario:</p>
+    <h2 style="text-align:center;">Contáctanos</h2>
 
-    <form action="https://formsubmit.co/micael_505@hotmail.com" method="POST" style="max-width: 500px; margin: auto;">
-      <input type="text" name="nombre" placeholder="Tu nombre" required style="width: 100%; padding: 0.5rem; margin: 0.5rem 0;" />
-      <input type="email" name="email" placeholder="Tu correo" required style="width: 100%; padding: 0.5rem; margin: 0.5rem 0;" />
-      <textarea name="mensaje" rows="5" placeholder="Escribe tu mensaje" required style="width: 100%; padding: 0.5rem; margin: 0.5rem 0;"></textarea>
-      <button type="submit" class="boton">Enviar</button>
+    <!-- ✅ FORMULARIO FUNCIONAL -->
+    <form action="https://formsubmit.co/mocael505@gmail.com" method="POST" style="max-width: 500px; margin: 2rem auto;" autocomplete="off">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" value="https://delirium-3d.github.io/delirium3d/gracias.html">
+
+      <label>Nombre:</label>
+      <input type="text" name="name" required style="width:100%;padding:10px;margin:10px 0;border-radius:6px;">
+
+      <label>Correo electrónico:</label>
+      <input type="email" name="email" required style="width:100%;padding:10px;margin:10px 0;border-radius:6px;">
+
+      <label>Mensaje:</label>
+      <textarea name="message" rows="5" required style="width:100%;padding:10px;margin:10px 0;border-radius:6px;"></textarea>
+
+      <button type="submit" class="boton">Enviar mensaje</button>
     </form>
+
+    <!-- MAPA O TEXTO DE DIRECCIÓN -->
+    <div style="text-align:center; margin-top: 3rem;">
+      <h3>Ubicación</h3>
+      <p>Alicante, España (envíos a toda Europa)</p>
+      <!-- O puedes insertar aquí un iframe de Google Maps -->
+    </div>
   </main>
 
-  <div w3-include-html="componentes/footer.html"></div>
+  <footer>
+    <p>&copy; 2025 DËLIRIUM 3D. Todos los derechos reservados.</p>
+    <p><a href="legal/privacy-policy.html">Política de privacidad</a> | <a href="legal/terms-conditions.html">Términos y condiciones</a></p>
+  </footer>
+
+  <!-- WhatsApp flotante -->
+  <a href="https://wa.me/34727774427" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+    <img src="assets/icono_whatsapp.png" alt="WhatsApp" />
+  </a>
+
+  <!-- Botón modo claro/oscuro -->
+  <button id="modo-toggle" onclick="document.body.classList.toggle('modo-claro')">
+    🌗 Modo claro/oscuro
+  </button>
 </body>
 </html>
