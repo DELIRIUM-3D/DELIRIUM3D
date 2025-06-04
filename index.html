@@ -25,12 +25,14 @@
 <body class="modo-oscuro">
   <!-- 🌍 Traductor visible -->
  <!-- Traductor con icono personalizado -->
+<!-- Icono de idioma personalizado -->
 <div style="position: absolute; top: 10px; right: 10px; z-index: 9999;">
-  <div onclick="document.querySelector('.goog-te-combo').click()" style="cursor:pointer;">
-    <img src="assets/traductor-icon.png" alt="Idioma" style="height: 26px;" />
-  </div>
-  <div id="google_translate_element" style="display: inline-block;"></div>
+  <img src="assets/icono_idioma.png" alt="Idioma" onclick="toggleTraductor()" style="height: 26px; cursor: pointer;" />
+
+  <!-- Contenedor oculto del traductor -->
+  <div id="google_translate_element" style="display: none;"></div>
 </div>
+
 
 
   <header>
