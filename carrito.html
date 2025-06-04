@@ -22,6 +22,8 @@
   </main>
 
   <script>
+    const ENVIO_FIJO = 4.90; // 💡 Cambia aquí el precio del envío si quieres
+
     let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
 
     function mostrarCarrito() {
@@ -39,18 +41,24 @@
 
       let total = 0;
       carrito.forEach((item, index) => {
-        total += item.precio;
+        total += item.precio * item.cantidad;
         const div = document.createElement('div');
         div.innerHTML = `
-          <p><strong>${item.nombre}</strong> - ${item.precio.toFixed(2)} € 
+          <p><strong>${item.nombre}</strong> - ${item.precio.toFixed(2)} € x 
+          <input type="number" value="${item.cantidad}" min="1" onchange="cambiarCantidad(${index}, this.value)" style="width:50px;" /> 
           <button onclick="eliminarDelCarrito(${index})">Eliminar</button></p>
         `;
         contenedor.appendChild(div);
       });
 
-      let envio = total >= 50 ? 0 : 4.90;
-      envioDiv.innerHTML = `<p>Envío: ${envio === 0 ? "Gratis" : envio.toFixed(2) + " €"}</p>`;
-      totalDiv.innerHTML = `<h3>Total con envío: ${(total + envio).toFixed(2)} €</h3>`;
+      envioDiv.innerHTML = `<p>Envío: ${ENVIO_FIJO === 0 ? "Gratis" : ENVIO_FIJO.toFixed(2) + " €"}</p>`;
+      totalDiv.innerHTML = `<h3>Total con envío: ${(total + ENVIO_FIJO).toFixed(2)} €</h3>`;
+    }
+
+    function cambiarCantidad(index, nuevaCantidad) {
+      carrito[index].cantidad = parseInt(nuevaCantidad);
+      localStorage.setItem('carrito', JSON.stringify(carrito));
+      mostrarCarrito();
     }
 
     function eliminarDelCarrito(index) {
@@ -66,9 +74,8 @@
     }
 
     function realizarPago() {
-      let total = carrito.reduce((acc, item) => acc + item.precio, 0);
-      let envio = total >= 50 ? 0 : 15;
-      let totalFinal = (total + envio).toFixed(2);
+      let total = carrito.reduce((acc, item) => acc + item.precio * item.cantidad, 0);
+      let totalFinal = (total + ENVIO_FIJO).toFixed(2);
       window.open(`https://www.paypal.me/noemigc10/${totalFinal}`, '_blank');
     }
 
