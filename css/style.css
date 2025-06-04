@@ -1,37 +1,13 @@
-/* === FUENTES === */
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@300;400;600&display=swap');
-
+/* Tu diseño original (estilo oscuro) */
 body {
+  background-color: #000;
+  color: #fff;
+  font-family: 'Segoe UI', sans-serif;
   margin: 0;
-  font-family: 'Poppins', sans-serif;
-  background-color: #0a0a0a;
-  color: #fff;
-  transition: background-color 0.3s, color 0.3s;
+  padding: 0;
 }
 
-/* === MODO CLARO === */
-body.modo-claro {
-  background-color: #f2f2f2;
-  color: #111;
-}
-
-body.modo-claro header,
-body.modo-claro footer {
-  background-color: #fff;
-  color: #111;
-}
-
-body.modo-claro .boton {
-  background-color: #111;
-  color: #fff;
-}
-
-body.modo-claro .categoria {
-  background-color: #ddd;
-  color: #111;
-}
-
-/* === ENCABEZADO === */
+/* Encabezado y navegación */
 header {
   background-color: #111;
   padding: 1rem;
@@ -39,115 +15,81 @@ header {
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
 }
 
-header h1 {
-  font-family: 'Orbitron', sans-serif;
-  font-size: 2rem;
-  margin: 0;
-  color: #0f0;
+.logo {
+  display: flex;
+  align-items: center;
 }
 
 .logo img {
-  height: 60px;
+  height: 50px;
   margin-right: 1rem;
 }
 
 nav ul {
   list-style: none;
-  padding: 0;
   display: flex;
-  gap: 1rem;
+  padding: 0;
+  margin: 0;
 }
 
-nav a {
-  text-decoration: none;
+nav ul li {
+  margin-left: 1rem;
+}
+
+nav ul li a {
   color: #0f0;
+  text-decoration: none;
   font-weight: bold;
-  transition: color 0.3s;
 }
 
-nav a:hover {
-  color: #fff;
+nav ul li a.active {
+  text-decoration: underline;
 }
 
-/* === HERO === */
+/* Secciones principales */
+main {
+  padding: 2rem;
+}
+
 .hero {
+  background: linear-gradient(to bottom, #0f0, #020);
+  padding: 2rem;
   text-align: center;
-  padding: 4rem 2rem;
-  background: linear-gradient(to right, #0f0 0%, #0a0a0a 100%);
-  color: #fff;
+  border-radius: 12px;
+  margin-bottom: 2rem;
 }
 
 .hero h2 {
-  font-family: 'Orbitron', sans-serif;
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
+  font-size: 2rem;
+  color: #000;
 }
 
 .hero p {
   font-size: 1.2rem;
-  margin-bottom: 2rem;
+  color: #000;
 }
 
-.boton {
-  background-color: #0f0;
-  color: #000;
+.hero .boton {
+  background-color: #000;
+  color: #0f0;
+  padding: 10px 20px;
   border: none;
-  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  margin-top: 1rem;
   font-weight: bold;
   cursor: pointer;
-  transition: all 0.3s;
-  border-radius: 6px;
 }
 
-.boton:hover {
-  background-color: #00cc00;
-  transform: scale(1.05);
+/* Productos */
+.destacados h3,
+.categorias h3 {
+  color: #0f0;
+  margin-bottom: 1rem;
 }
 
-/* === PRODUCTOS DESTACADOS === */
-.destacados {
-  padding: 2rem;
-  background-color: #111;
-}
-
-.productos-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  justify-content: center;
-}
-
-.producto {
-  background-color: #1a1a1a;
-  border: 2px solid #0f0;
-  border-radius: 12px;
-  padding: 1rem;
-  width: 250px;
-  text-align: center;
-  box-shadow: 0 0 15px rgba(0, 255, 0, 0.1);
-  transition: transform 0.3s;
-}
-
-.producto:hover {
-  transform: scale(1.03);
-}
-
-.producto img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
-}
-
-/* === CATEGORÍAS === */
-.categorias {
-  padding: 2rem;
-  background-color: #000;
-  text-align: center;
-}
-
+.productos-grid,
 .categorias-grid {
   display: flex;
   flex-wrap: wrap;
@@ -155,36 +97,51 @@ nav a:hover {
   justify-content: center;
 }
 
+.producto,
 .categoria {
+  background-color: #111;
+  border: 2px solid #0f0;
+  border-radius: 10px;
+  padding: 1rem;
+  text-align: center;
+  width: 200px;
+  color: #fff;
+}
+
+.producto img {
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+.producto h4 {
+  margin-top: 0.5rem;
+  color: #0f0;
+}
+
+.producto p {
+  font-size: 1rem;
+}
+
+.producto button.boton {
   background-color: #0f0;
   color: #000;
-  padding: 0.75rem 1.5rem;
-  border-radius: 20px;
+  border: none;
+  padding: 0.5rem 1rem;
+  margin-top: 0.5rem;
   font-weight: bold;
-  text-decoration: none;
-  transition: all 0.3s;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
-.categoria:hover {
-  background-color: #00cc00;
-  transform: scale(1.05);
-}
-
-/* === FOOTER === */
+/* Footer */
 footer {
-  background-color: #111;
   text-align: center;
   padding: 2rem;
-  color: #0f0;
   font-size: 0.9rem;
-}
-
-footer a {
   color: #0f0;
-  text-decoration: underline;
 }
 
-/* === WHATSAPP FLOTANTE === */
+/* WhatsApp flotante */
 .whatsapp-float {
   position: fixed;
   bottom: 20px;
@@ -193,54 +150,65 @@ footer a {
 }
 
 .whatsapp-float img {
-  height: 50px;
-  transition: transform 0.3s;
+  height: 45px;
 }
 
-.whatsapp-float img:hover {
-  transform: scale(1.1);
-}
-
-/* === BOTÓN MODO OSCURO/CLARO === */
+/* Botón modo claro/oscuro */
 #modo-toggle {
-  background-color: #0f0;
-  color: #000;
-  border: none;
   position: fixed;
   bottom: 20px;
   right: 20px;
-  z-index: 1000;
-  padding: 10px 15px;
+  background-color: #0f0;
+  color: #000;
+  border: none;
+  padding: 10px;
   border-radius: 8px;
   cursor: pointer;
-  font-weight: bold;
+  z-index: 1000;
 }
 
-/* === CARRITO === */
-input[type="number"] {
-  width: 60px;
-  padding: 5px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
+/* ============================== */
+/* MODO CLARO — ESTILOS EXTRAS   */
+/* ============================== */
+body.modo-claro {
+  background-color: #f4f4f4;
+  color: #111;
 }
 
-/* === RESPONSIVE === */
-@media (max-width: 768px) {
-  nav ul {
-    flex-direction: column;
-    gap: 0.5rem;
-    align-items: center;
-  }
+body.modo-claro .producto {
+  background-color: #fff;
+  color: #000;
+  border-color: #0f0;
+}
 
-  .productos-grid,
-  .categorias-grid {
-    flex-direction: column;
-    align-items: center;
-  }
+body.modo-claro .producto h4,
+body.modo-claro .producto p {
+  color: #000;
+}
 
-  header,
-  .destacados,
-  .categorias {
-    text-align: center;
-  }
+body.modo-claro .producto button.boton {
+  background-color: #0f0;
+  color: #000;
+}
+
+body.modo-claro nav ul li a {
+  color: #007700;
+}
+
+body.modo-claro .hero {
+  background: linear-gradient(to bottom, #ddd, #ccc);
+}
+
+body.modo-claro .hero h2,
+body.modo-claro .hero p {
+  color: #111;
+}
+
+body.modo-claro footer {
+  color: #333;
+}
+
+body.modo-claro .destacados h3,
+body.modo-claro .categorias h3 {
+  color: #111;
 }
