@@ -14,3 +14,8 @@ function agregarAlCarrito(nombre, precio) {
   alert(`${nombre} se ha añadido al carrito.`);
 }
 
+function registrarClickProducto(nombre) {
+  let clicks = JSON.parse(localStorage.getItem('productoClicks')) || {};
+  clicks[nombre] = (clicks[nombre] || 0) + 1;
+  localStorage.setItem('productoClicks', JSON.stringify(clicks));
+}
