@@ -212,3 +212,59 @@ body.modo-claro .destacados h3,
 body.modo-claro .categorias h3 {
   color: #111;
 }
+/* ============================== */
+/* RESPONSIVE — MÓVILES & TABLET */
+/* ============================== */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 1rem;
+  }
+
+  .productos-grid,
+  .categorias-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .producto,
+  .categoria {
+    width: 90%;
+    max-width: 300px;
+  }
+
+  .hero h2 {
+    font-size: 1.5rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .hero .boton {
+    width: 100%;
+    font-size: 1.1rem;
+  }
+
+  footer {
+    font-size: 0.8rem;
+    padding: 1rem;
+  }
+
+  #modo-toggle {
+    bottom: 70px;
+    right: 10px;
+    font-size: 0.9rem;
+    padding: 8px;
+  }
+
+  .whatsapp-float img {
+    height: 40px;
+  }
+}
