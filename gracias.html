@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gracias por tu mensaje - DËLIRIUM 3D</title>
+  <link rel="stylesheet" href="css/style.css" />
+
+  <!-- Traductor -->
+  <script>
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'es',
+        includedLanguages: 'es,en,fr',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      }, 'google_translate_element');
+    }
+  </script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</head>
+
+<body class="modo-oscuro">
+  <!-- Traductor -->
+  <div style="position: absolute; top: 10px; right: 10px; z-index: 9999;">
+    <img src="assets/icono_idioma.png" alt="Idioma" onclick="document.getElementById('google_translate_element').style.display='inline-block'" style="height: 26px; cursor: pointer;" />
+    <div id="google_translate_element" style="display: none;"></div>
+  </div>
+
+  <header>
+    <div class="logo">
+      <img src="assets/logo.jpg" alt="Logo DËLIRIUM 3D" />
+      <h1>DËLIRIUM 3D</h1>
+    </div>
+  </header>
+
+  <main style="text-align: center; padding: 4rem 2rem;">
+    <h2>🎉 ¡Gracias por tu mensaje!</h2>
+    <p>Nos pondremos en contacto contigo lo antes posible.</p>
+
+    <a href="index.html" class="boton" style="margin-top: 2rem; display: inline-block;">Volver a la tienda</a>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 DËLIRIUM 3D. Todos los derechos reservados.</p>
+    <p><a href="legal/privacy-policy.html">Política de privacidad</a> | <a href="legal/terms-conditions.html">Términos y condiciones</a></p>
+  </footer>
+
+  <!-- WhatsApp flotante -->
+  <a href="https://wa.me/34727774427" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+    <img src="assets/icono_whatsapp.png" alt="WhatsApp" />
+  </a>
+
+  <!-- Botón modo claro/oscuro -->
+  <button id="modo-toggle" onclick="document.body.classList.toggle('modo-claro')">
+    🌗 Modo claro/oscuro
+  </button>
+</body>
+</html>
