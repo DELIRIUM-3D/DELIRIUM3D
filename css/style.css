@@ -1,176 +1,246 @@
-/* ------------------ RESET ------------------ */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+/* === FUENTES === */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@300;400;600&display=swap');
+
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #000;
-  color: #0f0;
-  line-height: 1.6;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #0a0a0a;
+  color: #fff;
+  transition: background-color 0.3s, color 0.3s;
 }
 
-/* ------------------ GENERAL ------------------ */
-a {
-  color: #0f0;
-  text-decoration: none;
-  transition: 0.3s ease;
+/* === MODO CLARO === */
+body.modo-claro {
+  background-color: #f2f2f2;
+  color: #111;
 }
-a:hover {
+
+body.modo-claro header,
+body.modo-claro footer {
+  background-color: #fff;
+  color: #111;
+}
+
+body.modo-claro .boton {
+  background-color: #111;
   color: #fff;
 }
-img {
-  max-width: 100%;
-  display: block;
+
+body.modo-claro .categoria {
+  background-color: #ddd;
+  color: #111;
 }
-h1, h2, h3, h4 {
+
+/* === ENCABEZADO === */
+header {
+  background-color: #111;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+}
+
+header h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2rem;
+  margin: 0;
   color: #0f0;
 }
 
-/* ------------------ HEADER ------------------ */
-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: #111;
-  padding: 1rem 2rem;
-  border-bottom: 2px solid #0f0;
+.logo img {
+  height: 60px;
+  margin-right: 1rem;
 }
-.logo {
+
+nav ul {
+  list-style: none;
+  padding: 0;
   display: flex;
-  align-items: center;
   gap: 1rem;
 }
-.logo img {
-  height: 50px;
-}
-nav ul {
-  display: flex;
-  list-style: none;
-  gap: 2rem;
-}
+
 nav a {
+  text-decoration: none;
+  color: #0f0;
   font-weight: bold;
+  transition: color 0.3s;
 }
 
-/* ------------------ HERO ------------------ */
-.hero {
-  background-color: #1a1a1a;
-  padding: 4rem 2rem;
-  text-align: center;
+nav a:hover {
+  color: #fff;
 }
+
+/* === HERO === */
+.hero {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: linear-gradient(to right, #0f0 0%, #0a0a0a 100%);
+  color: #fff;
+}
+
 .hero h2 {
+  font-family: 'Orbitron', sans-serif;
   font-size: 2.5rem;
   margin-bottom: 1rem;
-  color: #ffffff;
-  text-shadow: 2px 2px 5px #000;
-}
-.hero p {
-  font-size: 1.2rem;
-  margin-bottom: 1.5rem;
-  color: #cccccc;
-  text-shadow: 1px 1px 3px #000;
-}
-.hero .boton {
-  background: #0f0;
-  color: #000;
-  padding: 0.8rem 1.6rem;
-  border: none;
-  font-weight: bold;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: background 0.3s ease;
-}
-.hero .boton:hover {
-  background: #fff;
-  color: #000;
 }
 
-/* ------------------ DESTACADOS ------------------ */
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.boton {
+  background-color: #0f0;
+  color: #000;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s;
+  border-radius: 6px;
+}
+
+.boton:hover {
+  background-color: #00cc00;
+  transform: scale(1.05);
+}
+
+/* === PRODUCTOS DESTACADOS === */
 .destacados {
   padding: 2rem;
+  background-color: #111;
 }
+
 .productos-grid {
-  display: grid;
-  gap: 1.5rem;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
 }
+
 .producto {
-  background: #111;
+  background-color: #1a1a1a;
+  border: 2px solid #0f0;
+  border-radius: 12px;
   padding: 1rem;
-  border: 1px solid #0f0;
-  border-radius: 10px;
+  width: 250px;
+  text-align: center;
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.producto:hover {
+  transform: scale(1.03);
+}
+
+.producto img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* === CATEGORÍAS === */
+.categorias {
+  padding: 2rem;
+  background-color: #000;
   text-align: center;
 }
 
-/* ------------------ CATEGORÍAS ------------------ */
-.categorias {
-  padding: 2rem;
-}
 .categorias-grid {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-}
-.categoria {
-  background: #0f0;
-  color: #000;
-  padding: 1rem;
-  flex: 1 1 200px;
-  text-align: center;
-  font-weight: bold;
-  border-radius: 10px;
-}
-.categoria:hover {
-  background: #fff;
+  justify-content: center;
 }
 
-/* ------------------ FOOTER ------------------ */
-footer {
-  background: #111;
-  padding: 2rem;
-  text-align: center;
-  border-top: 2px solid #0f0;
+.categoria {
+  background-color: #0f0;
+  color: #000;
+  padding: 0.75rem 1.5rem;
+  border-radius: 20px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s;
 }
+
+.categoria:hover {
+  background-color: #00cc00;
+  transform: scale(1.05);
+}
+
+/* === FOOTER === */
+footer {
+  background-color: #111;
+  text-align: center;
+  padding: 2rem;
+  color: #0f0;
+  font-size: 0.9rem;
+}
+
 footer a {
   color: #0f0;
-  margin: 0 0.5rem;
-}
-footer a:hover {
-  color: #fff;
+  text-decoration: underline;
 }
 
-/* ------------------ WHATSAPP FLOAT ------------------ */
+/* === WHATSAPP FLOTANTE === */
 .whatsapp-float {
   position: fixed;
   bottom: 20px;
-  right: 20px;
-  background: #25d366;
-  border-radius: 50%;
-  padding: 10px;
-  z-index: 999;
-}
-.whatsapp-float img {
-  width: 40px;
-  height: 40px;
+  left: 20px;
+  z-index: 1000;
 }
 
-/* ------------------ RESPONSIVE ------------------ */
+.whatsapp-float img {
+  height: 50px;
+  transition: transform 0.3s;
+}
+
+.whatsapp-float img:hover {
+  transform: scale(1.1);
+}
+
+/* === BOTÓN MODO OSCURO/CLARO === */
+#modo-toggle {
+  background-color: #0f0;
+  color: #000;
+  border: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* === CARRITO === */
+input[type="number"] {
+  width: 60px;
+  padding: 5px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+/* === RESPONSIVE === */
 @media (max-width: 768px) {
   nav ul {
     flex-direction: column;
-    gap: 1rem;
+    gap: 0.5rem;
+    align-items: center;
   }
+
+  .productos-grid,
   .categorias-grid {
     flex-direction: column;
+    align-items: center;
   }
-  .logo h1 {
-    font-size: 1.5rem;
+
+  header,
+  .destacados,
+  .categorias {
+    text-align: center;
   }
-}
-/* Oculta el ícono original de Google Translate */
-.goog-te-gadget-icon {
-  display: none !important;
 }
