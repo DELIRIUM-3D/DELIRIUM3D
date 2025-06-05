@@ -291,3 +291,28 @@ nav ul li a,
 body.modo-claro .logo h1 {
   color: #007700; /* Verde fuerte */
 }
+/* Animación de entrada para el logo y nombre */
+.logo {
+  display: flex;
+  align-items: center;
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: aparecerLogo 1.2s ease-out forwards;
+}
+
+@keyframes aparecerLogo {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Estilo al pasar el cursor por el nombre */
+.logo h1 {
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.logo h1:hover {
+  color: #00ff88;
+  text-shadow: 0 0 10px #00ff88;
+}
