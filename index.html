@@ -132,8 +132,20 @@
       <h3>🔥 Lo más buscado</h3>
       <div id="productos-populares" class="productos-grid">
         <!-- Productos más clicados aparecerán aquí -->
-      </div>
-    </section>
+    <div class="producto">
+      <img src="assets/img/soporte-movil.jpg" alt="Soporte móvil" />
+      <h4>Soporte móvil 3D</h4>
+      <p>7,99 €</p>
+      <button class="boton" onclick="agregarAlCarrito('Soporte móvil', 7.99)">Añadir al carrito</button>
+    </div>
+    <div class="producto">
+      <img src="assets/img/llavero-anime.jpg" alt="Llavero anime" />
+      <h4>Llavero anime personalizado</h4>
+      <p>4,99 €</p>
+      <button class="boton" onclick="agregarAlCarrito('Llavero anime', 4.99)">Añadir al carrito</button>
+    </div>
+  </div>
+</section>
 
     <section class="categorias">
       <h3>Categorías</h3>
@@ -152,41 +164,76 @@
 
   <footer>
     <p>&copy; 2025 DËLIRIUM 3D. Todos los derechos reservados.</p>
-    <p>
-      <a href="legal/privacy-policy.html">Política de privacidad</a> |
-      <a href="legal/terms-conditions.html">Términos y condiciones</a> |
-      <a href="legal/devoluciones.html">Devoluciones</a>
-    </p>
+    <p><a href="legal/privacy-policy.html">Política de privacidad</a> | <a href="legal/terms-conditions.html">Términos y condiciones</a></p>
   </footer>
 
-  <!-- Botón WhatsApp flotante -->
+  <!-- Botón WhatsApp -->
   <a href="https://wa.me/34727774427" class="whatsapp-float" target="_blank" aria-label="Contactar por WhatsApp">
     <img src="assets/icono_whatsapp.png" alt="WhatsApp" />
   </a>
 
-  <!-- Botón modo claro/oscuro -->
-  <button id="modo-toggle" onclick="document.body.classList.toggle('modo-claro')">
+  <!-- 🌗 Botón modo claro/oscuro -->
+  <button id="modo-toggle" onclick="document.body.classList.toggle('modo-claro')" style="position:fixed;bottom:8px;right:8px;z-index:1000;padding:10px;border-radius:5px;cursor:pointer;">
     🌗 Modo claro/oscuro
   </button>
+  <!-- 🔐 Botón oculto para reiniciar estadísticas -->
+<button id="reset-clicks" style="position:fixed;bottom:100px;right:20px;display:none;background:#f00;color:#fff;padding:10px;border:none;border-radius:6px;z-index:9999;">
+  🔄 Reiniciar "Lo más buscado"
+</button>
 
 <script>
+  // Mostrar el botón si tú pulsas Shift + R (por ejemplo)
+  document.addEventListener("keydown", function (e) {
+    if (e.shiftKey && e.key === "R") {
+      const btn = document.getElementById("reset-clicks");
+      btn.style.display = btn.style.display === "none" ? "block" : "none";
+    }
+  });
+
+  // Función para borrar los clics
+  document.getElementById("reset-clicks").addEventListener("click", () => {
+    localStorage.removeItem("productoClicks");
+    alert("✅ Estadísticas reiniciadas.");
+    location.reload();
+  });
+</script>
+<!-- 🔐 Botón oculto para reiniciar el carrito -->
+<button id="reset-carrito" style="position:fixed;bottom:150px;right:20px;display:none;background:#008000;color:#fff;padding:10px;border:none;border-radius:6px;z-index:9999;">
+  🛒 Reiniciar carrito
+</button>
+
+<script>
+  // Mostrar el botón si pulsas Shift + C
+  document.addEventListener("keydown", function (e) {
+    if (e.shiftKey && e.key === "C") {
+      const btn = document.getElementById("reset-carrito");
+      btn.style.display = btn.style.display === "none" ? "block" : "none";
+    }
+  });
+
+  // Función para borrar el carrito
+  document.getElementById("reset-carrito").addEventListener("click", () => {
+    localStorage.removeItem("carrito");
+    alert("🧹 Carrito eliminado.");
+    location.reload();
+  });
+</script>
+<script>
   // Al cargar la página, aplicar el modo guardado
-  if (localStorage.getItem('modo') === 'claro') {
+  const modoGuardado = localStorage.getItem('modo');
+
+  if (modoGuardado === 'claro') {
     document.body.classList.add('modo-claro');
   }
 
-  // Al pulsar el botón, alternar modo y guardar
-  const toggle = document.getElementById('modo-toggle');
-  if (toggle) {
-    toggle.addEventListener('click', () => {
-      document.body.classList.toggle('modo-claro');
-      const esClaro = document.body.classList.contains('modo-claro');
-      localStorage.setItem('modo', esClaro ? 'claro' : 'oscuro');
-    });
-  }
+  // Cuando se pulsa el botón, alternar modo y guardar
+  document.getElementById("modo-toggle").addEventListener("click", () => {
+    document.body.classList.toggle("modo-claro");
+    const esClaro = document.body.classList.contains("modo-claro");
+    localStorage.setItem("modo", esClaro ? "claro" : "oscuro");
+  });
 </script>
 
-    });
-  </script>
 </body>
 </html>
+<link rel="stylesheet" href="css/style.css" />
