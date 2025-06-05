@@ -281,3 +281,13 @@ nav ul li a,
 .boton {
   transition: all 0.5s ease-in-out;
 }
+/* Color del nombre DËLIRIUM 3D */
+.logo h1 {
+  color: #fff; /* Modo oscuro */
+  font-weight: bold;
+}
+
+/* En modo claro se vuelve verde */
+body.modo-claro .logo h1 {
+  color: #007700; /* Verde fuerte */
+}
