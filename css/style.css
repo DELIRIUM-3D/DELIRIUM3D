@@ -366,3 +366,38 @@ body.modo-claro .logo h1 {
 .header-icons img:hover {
   transform: scale(1.1);
 }
+body {
+  background-color: #000;
+  color: #fff;
+  transition: background 0.5s, color 0.5s;
+}
+
+body.modo-claro {
+  background-color: #fff;
+  color: #111;
+}
+
+/* Ajustes para productos, texto y botones */
+body.modo-claro .producto,
+body.modo-claro .categoria {
+  background-color: #f9f9f9;
+  color: #111;
+  border-color: #0f0;
+}
+
+body.modo-claro nav ul li a {
+  color: #007700;
+}
+
+body.modo-claro .hero {
+  background: linear-gradient(to bottom, #ddd, #ccc);
+}
+
+body.modo-claro .hero h2,
+body.modo-claro .hero p {
+  color: #111;
+}
+
+body.modo-claro footer {
+  color: #333;
+}
