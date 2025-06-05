@@ -350,3 +350,19 @@ body.modo-claro .logo h1 {
     display: none;
   }
 }
+.header-icons {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: 10px;
+  justify-content: center;
+}
+
+.header-icons img {
+  height: 32px;
+  transition: transform 0.3s ease;
+}
+
+.header-icons img:hover {
+  transform: scale(1.1);
+}
