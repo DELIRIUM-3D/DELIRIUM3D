@@ -124,17 +124,23 @@
     🌗 Modo claro/oscuro
   </button>
 
-  <!-- Script: recordar modo claro/oscuro -->
-  <script>
-    const modoGuardado = localStorage.getItem('modo');
-    if (modoGuardado === 'claro') {
-      document.body.classList.add('modo-claro');
-    }
+<script>
+  // Al cargar la página, aplicar el modo guardado
+  if (localStorage.getItem('modo') === 'claro') {
+    document.body.classList.add('modo-claro');
+  }
 
-    document.getElementById("modo-toggle").addEventListener("click", () => {
-      document.body.classList.toggle("modo-claro");
-      const esClaro = document.body.classList.contains("modo-claro");
-      localStorage.setItem("modo", esClaro ? "claro" : "oscuro");
+  // Al pulsar el botón, alternar modo y guardar
+  const toggle = document.getElementById('modo-toggle');
+  if (toggle) {
+    toggle.addEventListener('click', () => {
+      document.body.classList.toggle('modo-claro');
+      const esClaro = document.body.classList.contains('modo-claro');
+      localStorage.setItem('modo', esClaro ? 'claro' : 'oscuro');
+    });
+  }
+</script>
+
     });
   </script>
 </body>
