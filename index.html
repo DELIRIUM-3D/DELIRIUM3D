@@ -5,61 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DËLIRIUM 3D - Impresiones 3D personalizadas</title>
   <link rel="stylesheet" href="css/style.css" />
-  <link rel="icon" type="image/png" href="assets/logo.jpg" />
+  <link rel="icon" type="image/png" href="assets/img/logo.png" />
   <script src="js/main.js" defer></script>
   <script src="js/carrito.js" defer></script>
-
-  <!-- 🌍 Traductor automático -->
-  <script>
-    function googleTranslateElementInit() {
-      new google.translate.TranslateElement({
-        pageLanguage: 'es',
-        includedLanguages: 'es,en,fr',
-        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-      }, 'google_translate_element');
-    }
-  </script>
-  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </head>
-<script>
-  function toggleTraductor() {
-    const trad = document.getElementById("google_translate_element");
-    trad.style.display = trad.style.display === "none" ? "inline-block" : "none";
-  }
-
-  // Cerrar automáticamente cuando se selecciona un idioma
-  window.addEventListener("load", function () {
-    const observer = new MutationObserver(() => {
-      const sel = document.querySelector(".goog-te-combo");
-      if (sel) {
-        sel.addEventListener("change", () => {
-          document.getElementById("google_translate_element").style.display = "none";
-        });
-      }
-    });
-
-    observer.observe(document.body, { childList: true, subtree: true });
-  });
-</script>
-
-<body class="modo-oscuro">
-  <!-- 🌍 Traductor visible -->
- <!-- Traductor con icono personalizado -->
-<!-- Icono de idioma personalizado -->
-<div style="position: absolute; top: 10px; right: 10px; z-index: 9999;">
-  <img src="assets/traductor-icon.png" alt="Idioma" onclick="toggleTraductor()" style="height: 26px; cursor: pointer;" />
-
-  <!-- Contenedor oculto del traductor -->
-  <div id="google_translate_element" style="display: none;"></div>
-</div>
-
-
-
+<body>
   <header>
     <div class="logo">
       <img src="assets/logo.jpg" alt="Logo DËLIRIUM 3D" />
       <h1>DËLIRIUM 3D</h1>
     </div>
+
+    <!-- Botón ☰ Menú (solo en móvil) -->
+    <button class="menu-toggle" onclick="document.querySelector('nav ul').classList.toggle('mostrar')">
+      ☰ Menú
+    </button>
 
     <nav>
       <ul>
@@ -68,30 +28,13 @@
         <li><a href="galeria.html">Galería</a></li>
         <li><a href="contacto.html">Contacto</a></li>
       </ul>
-
-      <!-- REDES SOCIALES + CARRITO -->
-      <div class="header-icons" style="display: flex; align-items: center; gap: 10px; margin-left: 1rem;">
-        <a href="https://www.instagram.com/delirium_3d/?igsh=MTA1NGlwNjRwZTdieQ%3D%3D#" target="_blank" title="Instagram">
-          <img src="assets/icono_instagram.png" alt="Instagram" style="height: 56px;" />
-        </a>
-        <a href="https://tiktok.com/@delirium3d" target="_blank" title="TikTok">
-          <img src="assets/icono_tiktok.png" alt="TikTok" style="height: 40px;" />
-        </a>
-        <a href="https://www.facebook.com/delirium.3d.tresd?" target="_blank" title="Facebook">
-          <img src="assets/facebook-icon.png" alt="Facebook" style="height: 22px;" />
-        </a>
-        <a href="carrito.html" title="Tu carrito">
-          <img src="assets/icono_carrito.png" alt="Carrito" style="height: 38px;" />
-        </a>
-      </div>
     </nav>
   </header>
 
   <main>
-    <!-- (Tu contenido original permanece igual, no se ha modificado) -->
     <section class="hero">
       <h2>Impresión y Modelado 3D</h2>
-      <p>Lo que tu imaginas nosotros te lo hacemos realidad.</p>
+      <p>Lo que imaginas, lo creamos</p>
       <a href="productos/productos.html" class="boton">Ver productos</a>
     </section>
 
@@ -101,60 +44,28 @@
         <div class="producto">
           <img src="assets/img/funko-ejemplo.jpg" alt="Funko personalizado" />
           <h4>Funko personalizado</h4>
-          <p>Desde 30 €</p>
-          <button class="boton" onclick="agregarAlCarrito('Funko personalizado', 30)">Añadir al carrito</button>
+          <p>Desde 24,99 €</p>
         </div>
         <div class="producto">
           <img src="assets/img/cartel-led.jpg" alt="Cartel LED" />
           <h4>Cartel LED Minecraft</h4>
-          <p>30 €</p>
-          <button class="boton" onclick="agregarAlCarrito('Cartel LED Minecraft', 30)">Añadir al carrito</button>
+          <p>19,99 €</p>
         </div>
         <div class="producto">
-          <img src="assets/producto1.jpg" alt="Shimmer Arcane" />
-          <h4>Shimmer Arcane</h4>
-          <p>30 €</p>
-          <button class="boton" onclick="agregarAlCarrito('Shimmer Arcane', 30)">Añadir al carrito</button>
+          <img src="assets/img/soporte-movil.jpg" alt="Soporte móvil" />
+          <h4>Soporte móvil</h4>
+          <p>7,99 €</p>
         </div>
       </div>
     </section>
-<!-- OFERTAS DEL MES -->
-<section class="destacados">
-  <h3>🎯 Ofertas del mes</h3>
-  <div class="productos-grid">
-    <div class="producto">
-      <img src="assets/img/funko-oferta.jpg" alt="Funko oferta" />
-      <h4>Funko personalizado edición limitada</h4>
-      <p><del>29,99 €</del> <strong>24,99 €</strong></p>
-      <button class="boton" onclick="agregarAlCarrito('Funko oferta', 24.99)">Añadir al carrito</button>
-    </div>
-    <div class="producto">
-      <img src="assets/img/cartel-oferta.jpg" alt="Cartel LED oferta" />
-      <h4>Cartel LED Star Wars</h4>
-      <p><del>19,99 €</del> <strong>15,99 €</strong></p>
-      <button class="boton" onclick="agregarAlCarrito('Cartel LED Star Wars', 15.99)">Añadir al carrito</button>
-    </div>
-  </div>
-</section>
 
-<!-- LO MÁS BUSCADO -->
-<section class="destacados">
-  <h3>🔥 Lo más buscado</h3>
-  <div class="productos-grid">
-    <div class="producto">
-      <img src="assets/img/soporte-movil.jpg" alt="Soporte móvil" />
-      <h4>Soporte móvil 3D</h4>
-      <p>7,99 €</p>
-      <button class="boton" onclick="agregarAlCarrito('Soporte móvil', 7.99)">Añadir al carrito</button>
-    </div>
-    <div class="producto">
-      <img src="assets/img/llavero-anime.jpg" alt="Llavero anime" />
-      <h4>Llavero anime personalizado</h4>
-      <p>4,99 €</p>
-      <button class="boton" onclick="agregarAlCarrito('Llavero anime', 4.99)">Añadir al carrito</button>
-    </div>
-  </div>
-</section>
+    <!-- Lo más buscado dinámico -->
+    <section class="destacados">
+      <h3>🔥 Lo más buscado</h3>
+      <div id="productos-populares" class="productos-grid">
+        <!-- Productos más clicados aparecerán aquí -->
+      </div>
+    </section>
 
     <section class="categorias">
       <h3>Categorías</h3>
@@ -173,91 +84,35 @@
 
   <footer>
     <p>&copy; 2025 DËLIRIUM 3D. Todos los derechos reservados.</p>
-    <p><a href="legal/privacy-policy.html">Política de privacidad</a> | <a href="legal/terms-conditions.html">Términos y condiciones</a></p>
+    <p>
+      <a href="legal/privacy-policy.html">Política de privacidad</a> |
+      <a href="legal/terms-conditions.html">Términos y condiciones</a> |
+      <a href="legal/devoluciones.html">Devoluciones</a>
+    </p>
   </footer>
 
-  <!-- Botón WhatsApp -->
+  <!-- Botón WhatsApp flotante -->
   <a href="https://wa.me/34727774427" class="whatsapp-float" target="_blank" aria-label="Contactar por WhatsApp">
-    <img src="assets/icono_whatsapp.png" alt="WhatsApp" />
+    <img src="assets/img/whatsapp-icon.png" alt="WhatsApp" />
   </a>
 
-  <!-- 🌗 Botón modo claro/oscuro -->
-  <button id="modo-toggle" onclick="document.body.classList.toggle('modo-claro')" style="position:fixed;bottom:8px;right:8px;z-index:1000;padding:10px;border-radius:5px;cursor:pointer;">
+  <!-- Botón modo claro/oscuro -->
+  <button id="modo-toggle" onclick="document.body.classList.toggle('modo-claro')">
     🌗 Modo claro/oscuro
   </button>
-  <!-- 🔐 Botón oculto para reiniciar estadísticas -->
-<button id="reset-clicks" style="position:fixed;bottom:100px;right:20px;display:none;background:#f00;color:#fff;padding:10px;border:none;border-radius:6px;z-index:9999;">
-  🔄 Reiniciar "Lo más buscado"
-</button>
 
-<script>
-  // Mostrar el botón si tú pulsas Shift + R (por ejemplo)
-  document.addEventListener("keydown", function (e) {
-    if (e.shiftKey && e.key === "R") {
-      const btn = document.getElementById("reset-clicks");
-      btn.style.display = btn.style.display === "none" ? "block" : "none";
+  <!-- Script: recordar modo claro/oscuro -->
+  <script>
+    const modoGuardado = localStorage.getItem('modo');
+    if (modoGuardado === 'claro') {
+      document.body.classList.add('modo-claro');
     }
-  });
 
-  // Función para borrar los clics
-  document.getElementById("reset-clicks").addEventListener("click", () => {
-    localStorage.removeItem("productoClicks");
-    alert("✅ Estadísticas reiniciadas.");
-    location.reload();
-  });
-</script>
-<!-- 🔐 Botón oculto para reiniciar el carrito -->
-<button id="reset-carrito" style="position:fixed;bottom:150px;right:20px;display:none;background:#008000;color:#fff;padding:10px;border:none;border-radius:6px;z-index:9999;">
-  🛒 Reiniciar carrito
-</button>
-
-<script>
-  // Mostrar el botón si pulsas Shift + C
-  document.addEventListener("keydown", function (e) {
-    if (e.shiftKey && e.key === "C") {
-      const btn = document.getElementById("reset-carrito");
-      btn.style.display = btn.style.display === "none" ? "block" : "none";
-    }
-  });
-
-  // Función para borrar el carrito
-  document.getElementById("reset-carrito").addEventListener("click", () => {
-    localStorage.removeItem("carrito");
-    alert("🧹 Carrito eliminado.");
-    location.reload();
-  });
-</script>
-<script>
-  // Al cargar la página, aplicar el modo guardado
-  const modoGuardado = localStorage.getItem('modo');
-
-  if (modoGuardado === 'claro') {
-    document.body.classList.add('modo-claro');
-  }
-
-  // Cuando se pulsa el botón, alternar modo y guardar
-  document.getElementById("modo-toggle").addEventListener("click", () => {
-    document.body.classList.toggle("modo-claro");
-    const esClaro = document.body.classList.contains("modo-claro");
-    localStorage.setItem("modo", esClaro ? "claro" : "oscuro");
-  });
-</script>
-<script>
-  // Al cargar, aplicar el modo que se guardó en localStorage
-  const modoGuardado = localStorage.getItem('modo');
-  if (modoGuardado === 'claro') {
-    document.body.classList.add('modo-claro');
-  }
-
-  // Al hacer clic en el botón, alternar modo y guardar
-  document.getElementById("modo-toggle").addEventListener("click", () => {
-    document.body.classList.toggle("modo-claro");
-    const esClaro = document.body.classList.contains("modo-claro");
-    localStorage.setItem("modo", esClaro ? "claro" : "oscuro");
-  });
-</script>
-
+    document.getElementById("modo-toggle").addEventListener("click", () => {
+      document.body.classList.toggle("modo-claro");
+      const esClaro = document.body.classList.contains("modo-claro");
+      localStorage.setItem("modo", esClaro ? "claro" : "oscuro");
+    });
+  </script>
 </body>
 </html>
-<link rel="stylesheet" href="css/style.css" />
-
