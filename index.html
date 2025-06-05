@@ -227,6 +227,21 @@
     location.reload();
   });
 </script>
+<script>
+  // Al cargar la página, aplicar el modo guardado
+  const modoGuardado = localStorage.getItem('modo');
+
+  if (modoGuardado === 'claro') {
+    document.body.classList.add('modo-claro');
+  }
+
+  // Cuando se pulsa el botón, alternar modo y guardar
+  document.getElementById("modo-toggle").addEventListener("click", () => {
+    document.body.classList.toggle("modo-claro");
+    const esClaro = document.body.classList.contains("modo-claro");
+    localStorage.setItem("modo", esClaro ? "claro" : "oscuro");
+  });
+</script>
 
 </body>
 </html>
