@@ -242,6 +242,20 @@
     localStorage.setItem("modo", esClaro ? "claro" : "oscuro");
   });
 </script>
+<script>
+  // Al cargar, aplicar el modo que se guardó en localStorage
+  const modoGuardado = localStorage.getItem('modo');
+  if (modoGuardado === 'claro') {
+    document.body.classList.add('modo-claro');
+  }
+
+  // Al hacer clic en el botón, alternar modo y guardar
+  document.getElementById("modo-toggle").addEventListener("click", () => {
+    document.body.classList.toggle("modo-claro");
+    const esClaro = document.body.classList.contains("modo-claro");
+    localStorage.setItem("modo", esClaro ? "claro" : "oscuro");
+  });
+</script>
 
 </body>
 </html>
