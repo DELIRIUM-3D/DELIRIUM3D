@@ -1,66 +1,62 @@
-// Código JS general para interacción
-document.addEventListener('DOMContentLoaded', () => {
-  // Si deseas hacer acciones al cargar la página, hazlo aquí
-  console.log("DËLIRIUM 3D cargado correctamente.");
-  
-  // Ejemplo: marcar el menú actual activo
-  const links = document.querySelectorAll('nav a');
-  links.forEach(link => {
-    if (link.href === window.location.href) {
-      link.classList.add('active');
-    }
+// Cargar header y footer automáticamente una vez
+function includeHTML() {
+  if (document.body.classList.contains("html-incluido")) return;
+  document.body.classList.add("html-incluido");
+
+  const elements = document.querySelectorAll('[data-include]');
+  elements.forEach(el => {
+    const file = el.getAttribute('data-include');
+    fetch(file)
+      .then(res => res.text())
+      .then(data => el.innerHTML = data)
+      .catch(() => el.innerHTML = "<p>Error al cargar componente</p>");
   });
-});
-// ==========================
-// 🔥 PRODUCTOS MÁS BUSCADOS
-// ==========================
+}
+document.addEventListener("DOMContentLoaded", includeHTML);
 
-document.addEventListener("DOMContentLoaded", () => {
-  mostrarProductosPopulares();
-});
-
+// Mostrar productos populares desde localStorage
 function mostrarProductosPopulares() {
-  const productosDisponibles = {
-    "Funko personalizado": {
-      precio: 30,
-      imagen: "assets/img/funko-ejemplo.jpg"
-    },
-    "Cartel LED Minecraft": {
-      precio: 19.99,
-      imagen: "assets/img/cartel-led.jpg"
-    },
-    "Soporte móvil": {
-      precio: 7.99,
-      imagen: "assets/img/soporte-movil.jpg"
-    },
-    "Llavero anime": {
-      precio: 4.99,
-      imagen: "assets/img/llavero-anime.jpg"
-    }
-    // Puedes agregar más productos aquí si deseas
-  };
+  const datos = JSON.parse(localStorage.getItem("productosPopulares")) || [];
+  if (!Array.isArray(datos) || datos.length === 0) return;
 
-  const clicks = JSON.parse(localStorage.getItem('productoClicks')) || {};
-  const ordenados = Object.entries(clicks)
-    .sort((a, b) => b[1] - a[1])
-    .slice(0, 3);
+  // Ordenar por clics descendente
+  const populares = datos.sort((a, b) => b.clicks - a.clicks).slice(0, 3);
+  if (populares.length === 0) return;
 
-  const contenedor = document.getElementById('productos-populares');
+  const contenedor = document.getElementById("productos-populares");
   if (!contenedor) return;
 
-  contenedor.innerHTML = '';
+  contenedor.innerHTML = "";
 
-  ordenados.forEach(([nombre]) => {
-    const producto = productosDisponibles[nombre];
-    if (producto) {
-      contenedor.innerHTML += `
-        <div class="producto">
-          <img src="${producto.imagen}" alt="${nombre}" />
-          <h4>${nombre}</h4>
-          <p>${producto.precio.toFixed(2)} €</p>
-          <button class="boton" onclick="agregarAlCarrito('${nombre}', ${producto.precio})">Añadir al carrito</button>
-        </div>
-      `;
-    }
+  populares.forEach(producto => {
+    const div = document.createElement("div");
+    div.classList.add("producto");
+    div.innerHTML = `
+      <img src="${producto.imagen}" alt="${producto.nombre}" />
+      <h4>${producto.nombre}</h4>
+      <p>${producto.precio.toFixed(2)} €</p>
+      <button class="boton" onclick="agregarAlCarrito('${producto.nombre}', ${producto.precio})">Añadir al carrito</button>
+    `;
+    contenedor.appendChild(div);
   });
+}
+document.addEventListener("DOMContentLoaded", mostrarProductosPopulares);
+
+// Registrar clic en producto para popularidad
+function registrarClickProducto(nombre) {
+  let datos = JSON.parse(localStorage.getItem("productosPopulares")) || [];
+  const index = datos.findIndex(p => p.nombre === nombre);
+
+  if (index !== -1) {
+    datos[index].clicks++;
+  } else {
+    datos.push({
+      nombre: nombre,
+      clicks: 1,
+      precio: 0,
+      imagen: "assets/img/no-image.png"
+    });
+  }
+
+  localStorage.setItem("productosPopulares", JSON.stringify(datos));
 }
