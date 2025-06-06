@@ -3,83 +3,76 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Carrito de Compras - DËLIRIUM 3D</title>
+  <title>Carrito de compras - DËLIRIUM 3D</title>
   <link rel="stylesheet" href="css/style.css" />
   <script src="js/carrito.js" defer></script>
 </head>
 <body>
-  <header>
-    <h1>Tu Carrito de Compras</h1>
-  </header>
+  <header data-include="componentes/header.html"></header>
 
-  <main style="padding: 2rem;">
-    <div id="carrito-contenido"></div>
-    <div id="carrito-envio" style="margin-top: 1rem;"></div>
-    <div id="carrito-total" style="margin-top: 1rem;"></div>
+  <main>
+    <h2>Carrito de compras</h2>
 
-    <button class="boton" onclick="vaciarCarrito()">Vaciar carrito</button>
-    <button class="boton" onclick="realizarPago()">Finalizar compra</button>
+    <div id="carrito-contenido">
+      <ul id="lista-carrito"></ul>
+
+      <div class="resumen-compra">
+        <p><strong>Subtotal:</strong> <span id="subtotal">0.00 €</span></p>
+        <p><strong>Envío:</strong> <span id="envio">4.99 €</span></p>
+        <p><strong>Total:</strong> <span id="total">0.00 €</span></p>
+
+        <button class="boton" onclick="pagarConPayPal()">Pagar con PayPal</button>
+      </div>
+    </div>
+
+    <div id="carrito-vacio" style="display: none;">
+      <p>Tu carrito está vacío.</p>
+    </div>
   </main>
 
+  <footer data-include="componentes/footer.html"></footer>
+
+  <!-- Script para calcular correctamente el total con envío -->
   <script>
-    const ENVIO_FIJO = 12; // 💡 Cambia aquí el precio del envío si quieres
+    document.addEventListener("DOMContentLoaded", () => {
+      const listaCarrito = document.getElementById("lista-carrito");
+      const subtotalSpan = document.getElementById("subtotal");
+      const envioSpan = document.getElementById("envio");
+      const totalSpan = document.getElementById("total");
+      const carritoVacio = document.getElementById("carrito-vacio");
+      const carritoContenido = document.getElementById("carrito-contenido");
 
-    let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+      const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
-    function mostrarCarrito() {
-      const contenedor = document.getElementById('carrito-contenido');
-      const totalDiv = document.getElementById('carrito-total');
-      const envioDiv = document.getElementById('carrito-envio');
-      contenedor.innerHTML = '';
+      const PRECIO_ENVIO = 4.99; // <-- Aquí puedes cambiar el precio del envío
 
       if (carrito.length === 0) {
-        contenedor.innerHTML = '<p>Tu carrito está vacío.</p>';
-        totalDiv.innerHTML = '';
-        envioDiv.innerHTML = '';
+        carritoVacio.style.display = "block";
+        carritoContenido.style.display = "none";
         return;
       }
 
-      let total = 0;
-      carrito.forEach((item, index) => {
-        total += item.precio * item.cantidad;
-        const div = document.createElement('div');
-        div.innerHTML = `
-          <p><strong>${item.nombre}</strong> - ${item.precio.toFixed(2)} € x 
-          <input type="number" value="${item.cantidad}" min="1" onchange="cambiarCantidad(${index}, this.value)" style="width:50px;" /> 
-          <button onclick="eliminarDelCarrito(${index})">Eliminar</button></p>
-        `;
-        contenedor.appendChild(div);
+      let subtotal = 0;
+      listaCarrito.innerHTML = "";
+
+      carrito.forEach(producto => {
+        const li = document.createElement("li");
+        li.textContent = `${producto.nombre} - ${producto.precio.toFixed(2)} €`;
+        listaCarrito.appendChild(li);
+        subtotal += producto.precio;
       });
 
-      envioDiv.innerHTML = `<p>Envío: ${ENVIO_FIJO === 0 ? "Gratis" : ENVIO_FIJO.toFixed(2) + " €"}</p>`;
-      totalDiv.innerHTML = `<h3>Total con envío: ${(total + ENVIO_FIJO).toFixed(2)} €</h3>`;
-    }
+      subtotalSpan.textContent = `${subtotal.toFixed(2)} €`;
+      envioSpan.textContent = `${PRECIO_ENVIO.toFixed(2)} €`;
 
-    function cambiarCantidad(index, nuevaCantidad) {
-      carrito[index].cantidad = parseInt(nuevaCantidad);
-      localStorage.setItem('carrito', JSON.stringify(carrito));
-      mostrarCarrito();
-    }
+      const total = subtotal + PRECIO_ENVIO;
+      totalSpan.textContent = `${total.toFixed(2)} €`;
+    });
 
-    function eliminarDelCarrito(index) {
-      carrito.splice(index, 1);
-      localStorage.setItem('carrito', JSON.stringify(carrito));
-      mostrarCarrito();
+    function pagarConPayPal() {
+      // Aquí puedes enlazar tu cuenta o pasarela de pago
+      window.location.href = "https://www.paypal.me/noemigc10";
     }
-
-    function vaciarCarrito() {
-      carrito = [];
-      localStorage.setItem('carrito', JSON.stringify(carrito));
-      mostrarCarrito();
-    }
-
-    function realizarPago() {
-      let total = carrito.reduce((acc, item) => acc + item.precio * item.cantidad, 0);
-      let totalFinal = (total + ENVIO_FIJO).toFixed(2);
-      window.open(`https://www.paypal.me/noemigc10/${totalFinal}`, '_blank');
-    }
-
-    document.addEventListener("DOMContentLoaded", mostrarCarrito);
   </script>
 </body>
 </html>
