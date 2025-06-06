@@ -18,21 +18,23 @@
 
       <div class="resumen-compra">
         <p><strong>Subtotal:</strong> <span id="subtotal">0.00 €</span></p>
-        <p><strong>Envío:</strong> <span id="envio">12 €</span></p>
+        <p><strong>Envío:</strong> <span id="envio">4.99 €</span></p>
         <p><strong>Total:</strong> <span id="total">0.00 €</span></p>
 
         <button class="boton" onclick="pagarConPayPal()">Pagar con PayPal</button>
+        <button class="boton" onclick="vaciarCarrito()">Vaciar carrito</button>
+        <button class="boton" onclick="window.location.href='index.html'">Volver al inicio</button>
       </div>
     </div>
 
     <div id="carrito-vacio" style="display: none;">
       <p>Tu carrito está vacío.</p>
+      <button class="boton" onclick="window.location.href='index.html'">Volver al inicio</button>
     </div>
   </main>
 
   <footer data-include="componentes/footer.html"></footer>
 
-  <!-- Script para calcular correctamente el total con envío -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const listaCarrito = document.getElementById("lista-carrito");
@@ -42,9 +44,8 @@
       const carritoVacio = document.getElementById("carrito-vacio");
       const carritoContenido = document.getElementById("carrito-contenido");
 
-      const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-
-      const PRECIO_ENVIO = 12; // <-- Aquí puedes cambiar el precio del envío
+      let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+      const PRECIO_ENVIO = 4.99;
 
       if (carrito.length === 0) {
         carritoVacio.style.display = "block";
@@ -55,23 +56,45 @@
       let subtotal = 0;
       listaCarrito.innerHTML = "";
 
-      carrito.forEach(producto => {
+      carrito.forEach((producto, index) => {
+        if (!producto.cantidad) producto.cantidad = 1;
+
         const li = document.createElement("li");
-        li.textContent = `${producto.nombre} - ${producto.precio.toFixed(2)} €`;
+        li.innerHTML = `
+          ${producto.nombre} - ${producto.precio.toFixed(2)} € x ${producto.cantidad}
+          <button onclick="cambiarCantidad(${index}, 1)">+</button>
+          <button onclick="cambiarCantidad(${index}, -1)">−</button>
+        `;
         listaCarrito.appendChild(li);
-        subtotal += producto.precio;
+
+        subtotal += producto.precio * producto.cantidad;
       });
 
       subtotalSpan.textContent = `${subtotal.toFixed(2)} €`;
       envioSpan.textContent = `${PRECIO_ENVIO.toFixed(2)} €`;
-
       const total = subtotal + PRECIO_ENVIO;
       totalSpan.textContent = `${total.toFixed(2)} €`;
+
+      localStorage.setItem("carrito", JSON.stringify(carrito));
     });
 
     function pagarConPayPal() {
-      // Aquí puedes enlazar tu cuenta o pasarela de pago
       window.location.href = "https://www.paypal.me/noemigc10";
+    }
+
+    function vaciarCarrito() {
+      localStorage.removeItem("carrito");
+      location.reload();
+    }
+
+    function cambiarCantidad(index, cambio) {
+      let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+      carrito[index].cantidad = (carrito[index].cantidad || 1) + cambio;
+      if (carrito[index].cantidad <= 0) {
+        carrito.splice(index, 1);
+      }
+      localStorage.setItem("carrito", JSON.stringify(carrito));
+      location.reload();
     }
   </script>
 </body>
