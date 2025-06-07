@@ -98,5 +98,11 @@
       location.reload();
     }
   </script>
+  function generarNumeroPedido() {
+  const prefijo = "D3D-";
+  const aleatorio = Math.floor(100000 + Math.random() * 900000);
+  return prefijo + aleatorio;
+}
+
 </body>
 </html>
