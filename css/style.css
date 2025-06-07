@@ -482,3 +482,19 @@ nav ul li a,
   display: block;
   opacity: 1;
 }
+@keyframes aparecer {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
+.notificacion-carrito.mostrar {
+  display: block;
+  opacity: 1;
+  animation: aparecer 0.4s ease-out;
+}
