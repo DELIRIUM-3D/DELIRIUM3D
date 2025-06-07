@@ -1,47 +1,46 @@
 <footer class="footer">
- <div class="footer-logo">
+  <div class="footer-container">
+    <!-- Logo / nombre -->
+    <div class="footer-logo">
       <h2>DËLIRIUM 3D</h2>
     </div>
 
+    <!-- Enlaces legales -->
     <div class="footer-links">
-      <a href="legal/privacidad.html">Política de Privacidad</a>
-      <a href="legal/terminos.html">Términos y Condiciones</a>
-      <a href="legal/devoluciones.html">Devoluciones</a>
+      <a href="../legal/privacidad.html">Política de Privacidad</a>
+      <a href="../legal/terminos.html">Términos y Condiciones</a>
+      <a href="../legal/devoluciones.html">Devoluciones</a>
       <a href="mailto:contacto@delirium3d.com">Contacto</a>
     </div>
 
+    <!-- Redes sociales -->
     <div class="footer-social">
-      <p>Síguenos en redes y compra online:</p>
-
-      <!-- Instagram -->
-      <a href="https://https://www.instagram.com/delirium_3d" target="_blank" title="Instagram">
-        <img src="assets/icono_instagram.png" alt="Instagram" style="height: 50px; margin: 0 10px;" />
+      <a href="https://instagram.com/delirium3d" target="_blank">
+        <img src="../assets/icono_instagram.png" alt="Instagram" />
       </a>
-
-      <!-- TikTok -->
-      <a href="https://tiktok.com/@delirium3d" target="_blank" title="TikTok">
-        <img src="assets/icono_tiktok.png" alt="TikTok" style="height: 80px; margin: 0 10px;" />
+      <a href="https://tiktok.com/@delirium3d" target="_blank">
+        <img src="../assets/icono_tiktok.png" alt="TikTok" />
       </a>
-
-      <!-- Facebook -->
-      <a href="https://www.facebook.com/delirium.3d.tresd?" target="_blank" title="Facebook">
-        <img src="assets/facebook-icon.png" alt="Facebook" style="height: 16px; margin: 0 10px;" />
+      <a href="https://facebook.com/delirium3d" target="_blank">
+        <img src="../assets/facebook-icon.png" alt="Facebook" />
       </a>
-
-      <!-- WhatsApp -->
-      <a href="https://wa.me/34727774427" target="_blank" title="WhatsApp">
-        <img src="assets/icono_whatsapp.png" alt="WhatsApp" style="height: 48px; margin: 0 10px;" />
-      </a>
-
-      <!-- Carrito -->
-      <a href="carrito.html" title="Tu carrito">
-        <img src="assets/icono_carrito.png" alt="Carrito de compras" style="height: 50px; margin: 0 10px;" />
+      <a href="../carrito.html" title="Tu carrito">
+        <img src="../assets/icono_carrito.png" alt="Carrito de compras" />
       </a>
     </div>
 
     <div class="footer-copy">
       <p>&copy; 2025 DËLIRIUM 3D. Todos los derechos reservados.</p>
     </div>
-
   </div>
+
+  <!-- ========= BLOQUES NUEVOS (audio + notificación) ========= -->
+  <!-- Sonido de confirmación (base64, no requiere archivo externo) -->
+  <audio id="sonido-carrito" preload="auto">
+    <source src="data:audio/mp3;base64,//uQxAAAAAAAAAAAAAAAAAAAAAAAWGluZwAAAA8AAAACAAACcQCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIC" type="audio/mp3">
+  </audio>
+
+  <!-- Notificación flotante -->
+  <div id="notificacion-carrito" class="notificacion-carrito" style="display:none;"></div>
+  <!-- ========================================================= -->
 </footer>
