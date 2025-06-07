@@ -12,7 +12,6 @@
 
   <main>
     <h2>Carrito de compras</h2>
-<p><strong>N.º de pedido:</strong> <span id="numero-pedido">Generando...</span></p>
 
     <div id="carrito-contenido">
       <ul id="lista-carrito"></ul>
@@ -21,6 +20,7 @@
         <p><strong>Subtotal:</strong> <span id="subtotal">0.00 €</span></p>
         <p><strong>Envío:</strong> <span id="envio">4.99 €</span></p>
         <p><strong>Total:</strong> <span id="total">0.00 €</span></p>
+        <p><strong>N.º de pedido:</strong> <span id="numero-pedido">Generando...</span></p>
 
         <button class="boton" onclick="pagarConPayPal()">Pagar con PayPal</button>
         <button class="boton" onclick="vaciarCarrito()">Vaciar carrito</button>
@@ -37,6 +37,12 @@
   <footer data-include="componentes/footer.html"></footer>
 
   <script>
+    function generarNumeroPedido() {
+      const prefijo = "D3D-";
+      const aleatorio = Math.floor(100000 + Math.random() * 900000);
+      return prefijo + aleatorio;
+    }
+
     document.addEventListener("DOMContentLoaded", () => {
       const listaCarrito = document.getElementById("lista-carrito");
       const subtotalSpan = document.getElementById("subtotal");
@@ -44,9 +50,10 @@
       const totalSpan = document.getElementById("total");
       const carritoVacio = document.getElementById("carrito-vacio");
       const carritoContenido = document.getElementById("carrito-contenido");
+      const numeroPedidoSpan = document.getElementById("numero-pedido");
 
       let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-      const PRECIO_ENVIO = 12;
+      const PRECIO_ENVIO = 4.99;
 
       if (carrito.length === 0) {
         carritoVacio.style.display = "block";
@@ -76,10 +83,18 @@
       const total = subtotal + PRECIO_ENVIO;
       totalSpan.textContent = `${total.toFixed(2)} €`;
 
+      const numeroPedido = generarNumeroPedido();
+      numeroPedidoSpan.textContent = numeroPedido;
+
+      // Guardamos el número por si se usa en otra página
+      localStorage.setItem("pedidoGenerado", numeroPedido);
+
       localStorage.setItem("carrito", JSON.stringify(carrito));
     });
 
     function pagarConPayPal() {
+      const pedido = document.getElementById("numero-pedido").textContent;
+      localStorage.setItem("pedidoGenerado", pedido);
       window.location.href = "https://www.paypal.me/noemigc10";
     }
 
@@ -98,11 +113,5 @@
       location.reload();
     }
   </script>
-  function generarNumeroPedido() {
-  const prefijo = "D3D-";
-  const aleatorio = Math.floor(100000 + Math.random() * 900000);
-  return prefijo + aleatorio;
-}
-
 </body>
 </html>
