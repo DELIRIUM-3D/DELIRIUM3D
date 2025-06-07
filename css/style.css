@@ -498,3 +498,11 @@ nav ul li a,
   opacity: 1;
   animation: aparecer 0.4s ease-out;
 }
+/* Notificación flotante */
+.notificacion-carrito{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);
+background:#0f0;color:#000;padding:12px 24px;border-radius:8px;
+box-shadow:0 0 10px rgba(0,0,0,.4);font-weight:bold;font-size:14px;
+z-index:9999;opacity:0;transition:opacity .4s ease-in-out;}
+@keyframes aparecer{from{transform:translateY(100%);opacity:0;}
+to{transform:translateY(0);opacity:1;}}
+.notificacion-carrito.mostrar{display:block;opacity:1;animation:aparecer .4s ease-out;}
