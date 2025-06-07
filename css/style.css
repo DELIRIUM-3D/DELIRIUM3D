@@ -506,3 +506,16 @@ z-index:9999;opacity:0;transition:opacity .4s ease-in-out;}
 @keyframes aparecer{from{transform:translateY(100%);opacity:0;}
 to{transform:translateY(0);opacity:1;}}
 .notificacion-carrito.mostrar{display:block;opacity:1;animation:aparecer .4s ease-out;}
+
+.newsletter {
+  padding: 20px;
+  background-color: #111;
+  border-top: 2px solid #0f0;
+  text-align: center;
+  color: #0f0;
+}
+
+.newsletter h3 {
+  margin-bottom: 10px;
+  font-size: 22px;
+}
