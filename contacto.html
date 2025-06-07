@@ -46,7 +46,22 @@
     ...
 
     <!-- ✅ FORMULARIO FUNCIONAL -->
-    <form action="https://formsubmit.co/mocael505@gmail.com" method="POST" style="max-width: 500px; margin: 2rem auto;" autocomplete="off">
+    <form action="https://formsubmit.co/mocael505@gmail.com" method="POST" class="formulario-contacto">
+  <input type="hidden" name="_captcha" value="false">
+  <input type="hidden" name="_next" value="https://delirium-3d.github.io/delirium3d/contacto-exito.html">
+
+  <label for="nombre">Nombre:</label>
+  <input type="text" id="nombre" name="nombre" required>
+
+  <label for="email">Correo electrónico:</label>
+  <input type="email" id="email" name="email" required>
+
+  <label for="mensaje">Mensaje:</label>
+  <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+
+  <button type="submit" class="boton">Enviar mensaje</button>
+</form>
+
   <input type="hidden" name="_captcha" value="false">
   <input type="hidden" name="_next" value="https://delirium-3d.github.io/DELIRIUM3D//gracias.html">
 
