@@ -32,22 +32,28 @@
   </script>
 </head>
 
-  <!-- 🌍 Traductor automático -->
-  <script>
-    function googleTranslateElementInit() {
-      new google.translate.TranslateElement({
-        pageLanguage: 'es',
-        includedLanguages: 'es,en,fr',
-        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-      }, 'google_translate_element');
-    }
-  </script>
-  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-</head>
-<script>
-  function toggleTraductor() {
+<!-- Traductor minimizado -->
+<div id="traductor-boton" onclick="mostrarTraductor()">🌐</div>
+<div id="google_translate_element" style="display: none;"></div>
+
+<script type="text/javascript">
+  function mostrarTraductor() {
     const trad = document.getElementById("google_translate_element");
-    trad.style.display = trad.style.display === "none" ? "inline-block" : "none";
+    trad.style.display = trad.style.display === "none" ? "block" : "none";
+  }
+
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'es',
+      includedLanguages: 'es,en,fr',
+      layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+    }, 'google_translate_element');
+  }
+</script>
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</head>
+
   }
 
   // Cerrar automáticamente cuando se selecciona un idioma
