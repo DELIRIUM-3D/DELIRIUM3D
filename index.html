@@ -1,6 +1,9 @@
+index.html copiar en caso de eror a partir de aquí:
 <!DOCTYPE html>
 <html lang="es">
+</script>
 <head>
+  <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DËLIRIUM 3D - Impresiones 3D personalizadas</title>
@@ -29,12 +32,43 @@
     })(window, document, 'https://static.hotjar.com/c/hotjar-','.js?sv=');
   </script>
 </head>
-<body>
+
+<!-- Traductor minimizado -->
+<div id="traductor-boton" onclick="mostrarTraductor()">🌐</div>
+<div id="google_translate_element" style="display: none;"></div>
+
+<script type="text/javascript">
+  function mostrarTraductor() {
+    const trad = document.getElementById("google_translate_element");
+    trad.style.display = trad.style.display === "none" ? "block" : "none";
+  }
+
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'es',
+      includedLanguages: 'es,en,fr',
+      layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+    }, 'google_translate_element');
+  }
+</script>
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</head>
+
+<body class="modo-oscuro">
+
+
   <header>
     <div class="logo">
       <img src="assets/logo.jpg" alt="Logo DËLIRIUM 3D" />
       <h1>DËLIRIUM 3D</h1>
     </div>
+
+    <!-- Botón ☰ Menú (solo en móvil) -->
+    <button class="menu-toggle" onclick="document.querySelector('nav ul').classList.toggle('mostrar')">
+      ☰ Menú
+    </button>
+
     <nav>
       <ul>
         <li><a href="index.html" class="active">Inicio</a></li>
@@ -43,12 +77,35 @@
         <li><a href="contacto.html">Contacto</a></li>
       </ul>
     </nav>
+    <div class="header-icons">
+  <a href="https://www.instagram.com/delirium_3d/#" target="_blank">
+    <img src="assets/icono_instagram.png" alt="Instagram" />
+  </a>
+  <a href="https://tiktok.com/@delirium3d" target="_blank">
+    <img src="assets/icono_tiktok.png" alt="TikTok" />
+  </a>
+  <a href="https://www.facebook.com/delirium.3d.tresd" target="_blank">
+    <img src="assets/facebook-icon.png" alt="Facebook" />
+  </a>
+  <a href="carrito.html" title="Tu carrito">
+    <img src="assets/icono_carrito.png" alt="Carrito de compras" />
+  </a>
+</div>
+
+    <header>
+</div>
+
+
+    </ul>
+  </nav>
+</header>
+
   </header>
 
   <main>
     <section class="hero">
       <h2>Impresión y Modelado 3D</h2>
-      <p>Lo que imaginas, lo creamos.</p>
+      <p>Lo que imaginas, lo creamos</p>
       <a href="productos/productos.html" class="boton">Ver productos</a>
     </section>
 
@@ -58,20 +115,40 @@
         <div class="producto">
           <img src="assets/img/funko-ejemplo.jpg" alt="Funko personalizado" />
           <h4>Funko personalizado</h4>
-          <p>Desde 24,99 €</p>
+          <p>Desde 30 €</p>
         </div>
         <div class="producto">
           <img src="assets/img/cartel-led.jpg" alt="Cartel LED" />
           <h4>Cartel LED Minecraft</h4>
-          <p>19,99 €</p>
+          <p>30 €</p>
         </div>
         <div class="producto">
-          <img src="assets/img/soporte-movil.jpg" alt="Soporte móvil" />
-          <h4>Soporte móvil</h4>
-          <p>7,99 €</p>
+          <img src="assets/producto1.jpg" alt="Soporte móvil" />
+          <h4>Shimmer De Arcane</h4>
+          <p>30 €</p>
         </div>
       </div>
     </section>
+
+    <!-- Lo más buscado dinámico -->
+    <section class="destacados">
+      <h3>🔥 Lo más buscado</h3>
+      <div id="productos-populares" class="productos-grid">
+        <!-- Productos más clicados aparecerán aquí -->
+    <div class="producto">
+      <img src="assets/img/soporte-movil.jpg" alt="Soporte móvil" />
+      <h4>Soporte móvil 3D</h4>
+      <p>7,99 €</p>
+      <button class="boton" onclick="agregarAlCarrito('Soporte móvil', 7.99)">Añadir al carrito</button>
+    </div>
+    <div class="producto">
+      <img src="assets/img/llavero-anime.jpg" alt="Llavero anime" />
+      <h4>Llavero anime personalizado</h4>
+      <p>4,99 €</p>
+      <button class="boton" onclick="agregarAlCarrito('Llavero anime', 4.99)">Añadir al carrito</button>
+    </div>
+  </div>
+</section>
 
     <section class="categorias">
       <h3>Categorías</h3>
@@ -94,28 +171,77 @@
   </footer>
 
   <!-- Botón WhatsApp -->
-  <a href="https://wa.me/34TU_NUMERO" class="whatsapp-float" target="_blank" aria-label="Contactar por WhatsApp">
-    <img src="assets/img/whatsapp-icon.png" alt="WhatsApp" />
+  <a href="https://wa.me/34727774427" class="whatsapp-float" target="_blank" aria-label="Contactar por WhatsApp">
+    <img src="assets/icono_whatsapp.png" alt="WhatsApp" />
   </a>
 
-  <!-- Traductor minimizado -->
-  <div id="traductor-boton" onclick="mostrarTraductor()">🌐</div>
-  <div id="google_translate_element" style="display: none;"></div>
+  <!-- 🌗 Botón modo claro/oscuro -->
+  <button id="modo-toggle" onclick="document.body.classList.toggle('modo-claro')" style="position:fixed;bottom:8px;right:8px;z-index:1000;padding:10px;border-radius:5px;cursor:pointer;">
+    🌗 Modo claro/oscuro
+  </button>
+  <!-- 🔐 Botón oculto para reiniciar estadísticas -->
+<button id="reset-clicks" style="position:fixed;bottom:100px;right:20px;display:none;background:#f00;color:#fff;padding:10px;border:none;border-radius:6px;z-index:9999;">
+  🔄 Reiniciar "Lo más buscado"
+</button>
 
-  <script>
-    function mostrarTraductor() {
-      const trad = document.getElementById("google_translate_element");
-      trad.style.display = trad.style.display === "none" ? "block" : "none";
+<script>
+  // Mostrar el botón si tú pulsas Shift + R (por ejemplo)
+  document.addEventListener("keydown", function (e) {
+    if (e.shiftKey && e.key === "R") {
+      const btn = document.getElementById("reset-clicks");
+      btn.style.display = btn.style.display === "none" ? "block" : "none";
     }
+  });
 
-    function googleTranslateElementInit() {
-      new google.translate.TranslateElement({
-        pageLanguage: 'es',
-        includedLanguages: 'es,en,fr',
-        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-      }, 'google_translate_element');
+  // Función para borrar los clics
+  document.getElementById("reset-clicks").addEventListener("click", () => {
+    localStorage.removeItem("productoClicks");
+    alert("✅ Estadísticas reiniciadas.");
+    location.reload();
+  });
+</script>
+<!-- 🔐 Botón oculto para reiniciar el carrito -->
+<button id="reset-carrito" style="position:fixed;bottom:150px;right:20px;display:none;background:#008000;color:#fff;padding:10px;border:none;border-radius:6px;z-index:9999;">
+  🛒 Reiniciar carrito
+</button>
+
+<script>
+  // Mostrar el botón si pulsas Shift + C
+  document.addEventListener("keydown", function (e) {
+    if (e.shiftKey && e.key === "C") {
+      const btn = document.getElementById("reset-carrito");
+      btn.style.display = btn.style.display === "none" ? "block" : "none";
     }
-  </script>
-  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  });
+
+  // Función para borrar el carrito
+  document.getElementById("reset-carrito").addEventListener("click", () => {
+    localStorage.removeItem("carrito");
+    alert("🧹 Carrito eliminado.");
+    location.reload();
+  });
+</script>
+<script>
+  // Al cargar la página, aplicar el modo guardado
+  const modoGuardado = localStorage.getItem('modo');
+
+  if (modoGuardado === 'claro') {
+    document.body.classList.add('modo-claro');
+  }
+
+  // Cuando se pulsa el botón, alternar modo y guardar
+  document.getElementById("modo-toggle").addEventListener("click", () => {
+    document.body.classList.toggle("modo-claro");
+    const esClaro = document.body.classList.contains("modo-claro");
+    localStorage.setItem("modo", esClaro ? "claro" : "oscuro");
+  });
+</script>
+<audio id="sonido-carrito" preload="auto">
+  <source src="data:audio/mp3;base64,//uQxAAAAAAAAAAAAAAAAAAAAAAAWGluZwAAAA8AAAACAAACcQCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIC" type="audio/mp3">
+</audio>
+
 </body>
+  <div id="notificacion-carrito" class="notificacion-carrito" style="display: none;"></div>
+
 </html>
+<link rel="stylesheet" href="css/style.css" />
