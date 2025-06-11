@@ -37,3 +37,32 @@ function mostrarNotificacion(texto) {
 
   notif.style.display = "block";
 }
+async function generarFacturaPDF(productos, total, envio) {
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
+
+  const fecha = new Date().toLocaleString();
+  const numeroPedido = Math.floor(Math.random() * 1000000);
+
+  doc.setFontSize(18);
+  doc.text("Factura - DËLIRIUM 3D", 20, 20);
+
+  doc.setFontSize(12);
+  doc.text(`N.º Pedido: #${numeroPedido}`, 20, 30);
+  doc.text(`Fecha: ${fecha}`, 20, 37);
+
+  let y = 50;
+  doc.text("Productos:", 20, y);
+  y += 10;
+
+  productos.forEach(p => {
+    doc.text(`- ${p.nombre} x${p.cantidad} - ${p.precio.toFixed(2)}€`, 20, y);
+    y += 7;
+  });
+
+  doc.text(`Envío: ${envio.toFixed(2)}€`, 20, y + 5);
+  doc.setFontSize(14);
+  doc.text(`Total: ${total.toFixed(2)}€`, 20, y + 15);
+
+  doc.save(`factura_pedido_${numeroPedido}.pdf`);
+}
