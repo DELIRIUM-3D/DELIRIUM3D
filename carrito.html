@@ -3,96 +3,196 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Carrito - DËLIRIUM 3D</title>
+  <title>Carrito de compras - DËLIRIUM 3D</title>
   <link rel="stylesheet" href="css/style.css" />
-  <script src="js/includeHTML.js" defer></script>
   <script src="js/carrito.js" defer></script>
-</head>
-<body>
-  <div w3-include-html="components/header.html"></div>
 
-  <main class="carrito-container">
-    <h2>Tu carrito</h2>
-    <div id="carrito-items"></div>
-    <div id="carrito-total"></div>
-    <div class="carrito-botones">
-      <button id="btnVaciar">Vaciar carrito</button>
-      <button id="btnPagar">Pagar con PayPal</button>
-      <!-- 🔧 Botón de prueba (puedes eliminarlo si lo deseas) -->
-      <button onclick="testFactura()">Generar factura de prueba</button>
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VBMC5GKKB6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-VBMC5GKKB6');
+  </script>
+
+  <!-- Hotjar Tracking Code -->
+  <script>
+    (function(h,o,t,j,a,r){
+      h.hj = h.hj || function(){ (h.hj.q = h.hj.q || []).push(arguments); };
+      h._hjSettings = { hjid: 6428699, hjsv: 6 };
+      a = o.getElementsByTagName('head')[0];
+      r = o.createElement('script'); r.async = 1;
+      r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+      a.appendChild(r);
+    })(window, document, 'https://static.hotjar.com/c/hotjar-','.js?sv=');
+  </script>
+</head>
+
+</head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<body>
+  <header data-include="componentes/header.html"></header>
+
+  <main>
+    <h2>Carrito de compras</h2>
+
+    <div id="carrito-contenido">
+      <ul id="lista-carrito"></ul>
+
+      <div class="resumen-compra">
+        <p><strong>Subtotal:</strong> <span id="subtotal">0.00 €</span></p>
+        <p><strong>Envío:</strong> <span id="envio">4.99 €</span></p>
+        <p><strong>Total:</strong> <span id="total">0.00 €</span></p>
+        <p><strong>N.º de pedido:</strong> <span id="numero-pedido">Generando...</span></p>
+
+        <button class="boton" onclick="pagarConPayPal()">Pagar con PayPal</button>
+        <button class="boton" onclick="vaciarCarrito()">Vaciar carrito</button>
+        <button class="boton" onclick="window.location.href='index.html'">Volver al inicio</button>
+      </div>
     </div>
-    <div class="volver">
-      <a href="index.html" class="boton-volver">← Volver al inicio</a>
+
+    <div id="carrito-vacio" style="display: none;">
+      <p>Tu carrito está vacío.</p>
+      <button class="boton" onclick="window.location.href='index.html'">Volver al inicio</button>
     </div>
   </main>
 
-  <div w3-include-html="components/footer.html"></div>
+  <footer data-include="componentes/footer.html"></footer>
 
-  <!-- ✅ Librería jsPDF para generar la factura -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-
-  <!-- ✅ Función para generar factura PDF -->
   <script>
-    async function generarFacturaPDF(productos, total, envio) {
-      const { jsPDF } = window.jspdf;
-      const doc = new jsPDF();
-
-      const fecha = new Date().toLocaleString();
-      const numeroPedido = Math.floor(Math.random() * 1000000);
-
-      doc.setFontSize(18);
-      doc.text("Factura - DËLIRIUM 3D", 20, 20);
-
-      doc.setFontSize(12);
-      doc.text(`N.º Pedido: #${numeroPedido}`, 20, 30);
-      doc.text(`Fecha: ${fecha}`, 20, 37);
-
-      let y = 50;
-      doc.text("Productos:", 20, y);
-      y += 10;
-
-      productos.forEach(p => {
-        doc.text(`- ${p.nombre} x${p.cantidad} - ${p.precio.toFixed(2)}€`, 20, y);
-        y += 7;
-      });
-
-      doc.text(`Envío: ${envio.toFixed(2)}€`, 20, y + 5);
-      doc.setFontSize(14);
-      doc.text(`Total: ${total.toFixed(2)}€`, 20, y + 15);
-
-      doc.save(`factura_pedido_${numeroPedido}.pdf`);
+    function generarNumeroPedido() {
+      const prefijo = "D3D-";
+      const aleatorio = Math.floor(100000 + Math.random() * 900000);
+      return prefijo + aleatorio;
     }
 
     document.addEventListener("DOMContentLoaded", () => {
-      const btnPagar = document.getElementById("btnPagar");
-      if (btnPagar) {
-        btnPagar.addEventListener("click", () => {
-          const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+      const listaCarrito = document.getElementById("lista-carrito");
+      const subtotalSpan = document.getElementById("subtotal");
+      const envioSpan = document.getElementById("envio");
+      const totalSpan = document.getElementById("total");
+      const carritoVacio = document.getElementById("carrito-vacio");
+      const carritoContenido = document.getElementById("carrito-contenido");
+      const numeroPedidoSpan = document.getElementById("numero-pedido");
 
-          const productos = carrito.map(item => ({
-            nombre: item.nombre,
-            cantidad: item.cantidad,
-            precio: item.precio
-          }));
+      let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+      const PRECIO_ENVIO = 12;
 
-          const total = carrito.reduce((acc, item) => acc + (item.precio * item.cantidad), 0);
-          const envio = 4.99;
-
-          generarFacturaPDF(productos, total + envio, envio);
-        });
+      if (carrito.length === 0) {
+        carritoVacio.style.display = "block";
+        carritoContenido.style.display = "none";
+        return;
       }
+
+      let subtotal = 0;
+      listaCarrito.innerHTML = "";
+
+      carrito.forEach((producto, index) => {
+        if (!producto.cantidad) producto.cantidad = 1;
+
+        const li = document.createElement("li");
+        li.innerHTML = `
+          ${producto.nombre} - ${producto.precio.toFixed(2)} € x ${producto.cantidad}
+          <button onclick="cambiarCantidad(${index}, 1)">+</button>
+          <button onclick="cambiarCantidad(${index}, -1)">−</button>
+        `;
+        listaCarrito.appendChild(li);
+
+        subtotal += producto.precio * producto.cantidad;
+      });
+
+      subtotalSpan.textContent = `${subtotal.toFixed(2)} €`;
+      envioSpan.textContent = `${PRECIO_ENVIO.toFixed(2)} €`;
+      const total = subtotal + PRECIO_ENVIO;
+      totalSpan.textContent = `${total.toFixed(2)} €`;
+
+      const numeroPedido = generarNumeroPedido();
+      numeroPedidoSpan.textContent = numeroPedido;
+
+      // Guardamos el número por si se usa en otra página
+      localStorage.setItem("pedidoGenerado", numeroPedido);
+
+      localStorage.setItem("carrito", JSON.stringify(carrito));
     });
 
-    function testFactura() {
-      const productos = [
-        { nombre: "Funko personalizado", cantidad: 1, precio: 24.99 },
-        { nombre: "Cartel LED", cantidad: 2, precio: 19.99 }
-      ];
-      const total = productos.reduce((acc, p) => acc + p.precio * p.cantidad, 0);
-      const envio = 4.99;
+    function pagarConPayPal() {
+      const pedido = document.getElementById("numero-pedido").textContent;
+      localStorage.setItem("pedidoGenerado", pedido);
+      window.location.href = "https://www.paypal.me/noemigc10";
+    }
 
-      generarFacturaPDF(productos, total + envio, envio);
+    function vaciarCarrito() {
+      localStorage.removeItem("carrito");
+      location.reload();
+    }
+
+    function cambiarCantidad(index, cambio) {
+      let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+      carrito[index].cantidad = (carrito[index].cantidad || 1) + cambio;
+      if (carrito[index].cantidad <= 0) {
+        carrito.splice(index, 1);
+      }
+      localStorage.setItem("carrito", JSON.stringify(carrito));
+      location.reload();
     }
   </script>
+  <!-- jsPDF para generar factura PDF -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<script>
+  async function generarFacturaPDF(productos, total, envio) {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    const fecha = new Date().toLocaleString();
+    const numeroPedido = Math.floor(Math.random() * 1000000);
+
+    doc.setFontSize(18);
+    doc.text("Factura - DËLIRIUM 3D", 20, 20);
+
+    doc.setFontSize(12);
+    doc.text(`N.º Pedido: #${numeroPedido}`, 20, 30);
+    doc.text(`Fecha: ${fecha}`, 20, 37);
+
+    let y = 50;
+    doc.text("Productos:", 20, y);
+    y += 10;
+
+    productos.forEach(p => {
+      doc.text(`- ${p.nombre} x${p.cantidad} - ${p.precio.toFixed(2)}€`, 20, y);
+      y += 7;
+    });
+
+    doc.text(`Envío: ${envio.toFixed(2)}€`, 20, y + 5);
+    doc.setFontSize(14);
+    doc.text(`Total: ${total.toFixed(2)}€`, 20, y + 15);
+
+    doc.save(`factura_pedido_${numeroPedido}.pdf`);
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const btnPagar = document.getElementById("btnPagar");
+    if (!btnPagar) return;
+
+    btnPagar.addEventListener("click", () => {
+      const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+      const productos = carrito.map(item => ({
+        nombre: item.nombre,
+        cantidad: item.cantidad,
+        precio: item.precio
+      }));
+
+      const total = carrito.reduce((acc, item) => acc + (item.precio * item.cantidad), 0);
+      const envio = 12;
+
+      generarFacturaPDF(productos, total + envio, envio);
+    });
+  });
+</script>
+  <button onclick="testFactura()">Generar factura de prueba</button>
+
 </body>
 </html>
