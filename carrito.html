@@ -26,7 +26,7 @@
   </main>
 
   <div w3-include-html="components/footer.html"></div>
-  <!-- jsPDF para generar la factura -->
+  <!-- Librería jsPDF para generar la factura en PDF -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script>
     async function generarFacturaPDF(productos, total, envio) {
@@ -70,7 +70,10 @@
             precio: item.precio
           }));
 
-          const total = carrito.reduce((acc, item) => acc + (item.precio * item.cantidad), 0);
+          const total = carrito.reduce(
+            (acc, item) => acc + item.precio * item.cantidad,
+            0
+          );
           const envio = 4.99;
 
           generarFacturaPDF(productos, total + envio, envio);
@@ -78,6 +81,7 @@
       }
     });
 
+    // Función de prueba para generar una factura sin pagar
     function testFactura() {
       const productos = [
         { nombre: "Funko personalizado", cantidad: 1, precio: 24.99 },
