@@ -1,21 +1,15 @@
-// Añadir producto al carrito con cantidad acumulada
-function agregarAlCarrito(nombre, precio) {
+function añadirAlCarrito(nombre, precio) {
   let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+  const existente = carrito.find(p => p.nombre === nombre);
 
-  const index = carrito.findIndex(item => item.nombre === nombre);
-
-  if (index !== -1) {
-    carrito[index].cantidad = (carrito[index].cantidad || 1) + 1;
+  if (existente) {
+    existente.cantidad += 1;
   } else {
-    carrito.push({
-      nombre: nombre,
-      precio: precio,
-      cantidad: 1
-    });
+    carrito.push({ nombre, precio, cantidad: 1 });
   }
 
   localStorage.setItem("carrito", JSON.stringify(carrito));
-  mostrarNotificacion(`${nombre} añadido al carrito.`);
+  alert(`${nombre} se ha añadido al carrito`);
 }
 
 // Mostrar notificación flotante con sonido
