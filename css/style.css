@@ -617,10 +617,12 @@ to{transform:translateY(0);opacity:1;}}
 
 .carrito-acciones {
   display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
   margin-top: 2rem;
 }
+
 .carrito-acciones button {
   background-color: #00ff00;
   color: black;
