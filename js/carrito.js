@@ -1,5 +1,13 @@
+// Recuperar el carrito desde localStorage o iniciar vacío
+let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+// Guardar el carrito actualizado
+function guardarCarrito() {
+  localStorage.setItem("carrito", JSON.stringify(carrito));
+}
+
+// Añadir producto al carrito
 function añadirAlCarrito(nombre, precio) {
-  let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
   const existente = carrito.find(p => p.nombre === nombre);
 
   if (existente) {
@@ -8,55 +16,61 @@ function añadirAlCarrito(nombre, precio) {
     carrito.push({ nombre, precio, cantidad: 1 });
   }
 
-  localStorage.setItem("carrito", JSON.stringify(carrito));
+  guardarCarrito();
   alert(`${nombre} se ha añadido al carrito`);
 }
 
-// Mostrar notificación flotante con sonido
-function mostrarNotificacion(texto) {
-  const notif = document.getElementById("notificacion-carrito");
-  const sonido = document.getElementById("sonido-carrito");
+// Mostrar productos en la página del carrito
+function mostrarCarrito() {
+  const contenedor = document.getElementById("carrito-items");
+  const totalElemento = document.getElementById("carrito-total");
+  contenedor.innerHTML = "";
+  let total = 0;
 
-  if (!notif) return;
+  if (carrito.length === 0) {
+    contenedor.innerHTML = "<p>Tu carrito está vacío.</p>";
+    totalElemento.innerHTML = "";
+    return;
+  }
 
-  notif.textContent = "✅ " + texto;
-  notif.classList.add("mostrar");
-
-  if (sonido) sonido.play();
-
-  setTimeout(() => {
-    notif.classList.remove("mostrar");
-    setTimeout(() => notif.style.display = "none", 400);
-  }, 2000);
-
-  notif.style.display = "block";
-}
-async function generarFacturaPDF(productos, total, envio) {
-  const { jsPDF } = window.jspdf;
-  const doc = new jsPDF();
-
-  const fecha = new Date().toLocaleString();
-  const numeroPedido = Math.floor(Math.random() * 1000000);
-
-  doc.setFontSize(18);
-  doc.text("Factura - DËLIRIUM 3D", 20, 20);
-
-  doc.setFontSize(12);
-  doc.text(`N.º Pedido: #${numeroPedido}`, 20, 30);
-  doc.text(`Fecha: ${fecha}`, 20, 37);
-
-  let y = 50;
-  doc.text("Productos:", 20, y);
-  y += 10;
-
-  productos.forEach(p => {
-    doc.text(`- ${p.nombre} x${p.cantidad} - ${p.precio.toFixed(2)}€`, 20, y);
-    y += 7;
+  carrito.forEach((producto, index) => {
+    const div = document.createElement("div");
+    div.classList.add("item-carrito");
+    div.innerHTML = `
+      <span>${producto.nombre} x${producto.cantidad}</span>
+      <span>${(producto.precio * producto.cantidad).toFixed(2)} €</span>
+      <button onclick="eliminarDelCarrito(${index})">Eliminar</button>
+    `;
+    contenedor.appendChild(div);
+    total += producto.precio * producto.cantidad;
   });
 
-  doc.text(`Envío: ${envio.toFixed(2)}€`, 20, y + 5);
-  doc.setFontSize(14);
-  doc.text(`Total: ${total.toFixed(2)}€`, 20, y + 15);
-
-  doc.save(`factura_pedido_${numeroPedido}.pdf`);
+  const envio = 4.99;
+  totalElemento.innerHTML = `<strong>Total: ${(total + envio).toFixed(2)} € (incl. envío)</strong>`;
 }
+
+// Eliminar un producto del carrito
+function eliminarDelCarrito(index) {
+  carrito.splice(index, 1);
+  guardarCarrito();
+  mostrarCarrito();
+}
+
+// Vaciar todo el carrito
+function vaciarCarrito() {
+  carrito = [];
+  guardarCarrito();
+  mostrarCarrito();
+}
+
+// Evento al cargar la página
+document.addEventListener("DOMContentLoaded", () => {
+  const btnVaciar = document.getElementById("btnVaciar");
+  if (btnVaciar) {
+    btnVaciar.addEventListener("click", vaciarCarrito);
+  }
+
+  if (document.getElementById("carrito-items")) {
+    mostrarCarrito();
+  }
+});
