@@ -6,7 +6,6 @@
   <title>Carrito - DËLIRIUM 3D</title>
   <link rel="stylesheet" href="css/style.css" />
   <script src="js/includeHTML.js" defer></script>
-  <script src="js/carrito.js" defer></script>
 </head>
 <body>
   <div w3-include-html="components/header.html"></div>
@@ -15,19 +14,23 @@
     <h2>Tu carrito</h2>
     <div id="carrito-items"></div>
     <div id="carrito-total"></div>
+
     <div class="carrito-botones">
       <button id="btnVaciar">Vaciar carrito</button>
       <button id="btnPagar">Pagar con PayPal</button>
       <button onclick="testFactura()">Generar factura de prueba</button>
     </div>
+
     <div class="volver">
       <a href="index.html" class="boton-volver">← Volver al inicio</a>
     </div>
   </main>
 
   <div w3-include-html="components/footer.html"></div>
-  <!-- Librería jsPDF para generar la factura en PDF -->
+
+  <!-- jsPDF para generar factura -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
   <script>
     async function generarFacturaPDF(productos, total, envio) {
       const { jsPDF } = window.jspdf;
@@ -38,14 +41,12 @@
 
       doc.setFontSize(18);
       doc.text("Factura - DËLIRIUM 3D", 20, 20);
-
       doc.setFontSize(12);
       doc.text(`N.º Pedido: #${numeroPedido}`, 20, 30);
       doc.text(`Fecha: ${fecha}`, 20, 37);
 
       let y = 50;
-      doc.text("Productos:", 20, y);
-      y += 10;
+      doc.text("Productos:", 20, y); y += 10;
 
       productos.forEach(p => {
         doc.text(`- ${p.nombre} x${p.cantidad} - ${p.precio.toFixed(2)}€`, 20, y);
@@ -55,43 +56,38 @@
       doc.text(`Envío: ${envio.toFixed(2)}€`, 20, y + 5);
       doc.setFontSize(14);
       doc.text(`Total: ${total.toFixed(2)}€`, 20, y + 15);
-
       doc.save(`factura_pedido_${numeroPedido}.pdf`);
     }
+
     document.addEventListener("DOMContentLoaded", () => {
       const btnPagar = document.getElementById("btnPagar");
       if (btnPagar) {
         btnPagar.addEventListener("click", () => {
           const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-
           const productos = carrito.map(item => ({
             nombre: item.nombre,
             cantidad: item.cantidad,
             precio: item.precio
           }));
-
-          const total = carrito.reduce(
-            (acc, item) => acc + item.precio * item.cantidad,
-            0
-          );
-          const envio = 12;
-
+          const total = carrito.reduce((acc, item) => acc + (item.precio * item.cantidad), 0);
+          const envio = 4.99;
           generarFacturaPDF(productos, total + envio, envio);
         });
       }
     });
 
-    // Función de prueba para generar una factura sin pagar
     function testFactura() {
       const productos = [
-        { nombre: "Funko personalizado", cantidad: 1, precio: 120 },
-        { nombre: "Cartel LED", cantidad: 2, precio: 70 }
+        { nombre: "Funko personalizado", cantidad: 1, precio: 24.99 },
+        { nombre: "Cartel LED", cantidad: 2, precio: 19.99 }
       ];
       const total = productos.reduce((acc, p) => acc + p.precio * p.cantidad, 0);
       const envio = 12;
-
       generarFacturaPDF(productos, total + envio, envio);
     }
   </script>
+
+  <!-- Script del carrito -->
+  <script src="js/carrito.js"></script>
 </body>
 </html>
