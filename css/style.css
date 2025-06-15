@@ -603,8 +603,26 @@ to{transform:translateY(0);opacity:1;}}
   margin: 0 5px;
 }
 
+.carrito-acciones button,
 .carrito-item button {
   background-color: #00ff00;
+  color: #000;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  border: 2px solid #00cc00;
+  border-radius: 8px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 8px rgba(0, 255, 0, 0.3);
+}
+
+.carrito-acciones button:hover,
+.carrito-item button:hover {
+  background-color: #00cc00;
+  box-shadow: 0 0 12px rgba(0, 255, 0, 0.6);
+}
+
 }
 .carrito-envio-total {
   text-align: right;
@@ -632,23 +650,23 @@ to{transform:translateY(0);opacity:1;}}
 }
 
 
-.carrito-acciones button {
-  background-color: #00ff00 !important;
-  color: #000 !important;
+.carrito-acciones button,
+.carrito-item button {
+  background-color: #00ff00;
+  color: #000;
   font-weight: bold;
-  padding: 0.9rem 1.5rem;
+  padding: 0.5rem 1rem;
   border: 2px solid #00cc00;
-  border-radius: 10px;
-  font-size: 1rem;
+  border-radius: 8px;
   cursor: pointer;
-  transition: all 0.3s ease;
   text-transform: uppercase;
-  box-shadow: 0 0 8px rgba(0, 255, 0, 0.4);
+  transition: all 0.3s ease;
+  box-shadow: 0 0 8px rgba(0, 255, 0, 0.3);
 }
 
-.carrito-acciones button:hover {
+.carrito-acciones button:hover,
+.carrito-item button:hover {
   background-color: #00cc00;
-  color: #000;
   box-shadow: 0 0 12px rgba(0, 255, 0, 0.6);
 }
 
