@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (btnPagar) {
     btnPagar.addEventListener("click", () => {
       const carrito = obtenerCarrito();
-      const envio = 4.99;
+      const envio = 12;
       const total = calcularTotal(carrito) + envio;
       generarFacturaPDF(carrito, total, envio);
     });
@@ -44,7 +44,7 @@ function mostrarCarrito() {
   const carrito = obtenerCarrito();
   const carritoItems = document.getElementById("carrito-items");
   const carritoTotal = document.getElementById("carrito-total");
-  const envio = 4.99;
+  const envio = 12;
 
   if (!carritoItems || !carritoTotal) return;
 
