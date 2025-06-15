@@ -622,6 +622,11 @@ to{transform:translateY(0);opacity:1;}}
   flex-wrap: wrap;
   margin-top: 2rem;
 }
+.carrito-container img {
+  display: block;
+  max-width: 100%;
+  margin: 1rem auto;
+}
 
 .carrito-acciones button {
   background-color: #00ff00;
