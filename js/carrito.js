@@ -121,10 +121,3 @@ document.getElementById('generarFactura')?.addEventListener('click', () => {
   doc.text("Gracias por tu compra.", 10, 20);
   doc.save("factura_delirium3d.pdf");
 });
-document.getElementById('generarFactura')?.addEventListener('click', () => {
-  const { jsPDF } = window.jspdf;
-  const doc = new jsPDF();
-  doc.text("Factura - DËLIRIUM 3D", 10, 10);
-  doc.text("Gracias por tu compra.", 10, 20);
-  doc.save("factura_delirium3d.pdf");
-});
