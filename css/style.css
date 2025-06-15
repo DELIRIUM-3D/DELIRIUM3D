@@ -713,3 +713,65 @@ to{transform:translateY(0);opacity:1;}}
   color: #000;
   border: none;
   padding: 10px 20px
+/* === CARRITO VISUAL MEJORADO === */
+.carrito-container {
+  padding: 2rem;
+  max-width: 800px;
+  margin: auto;
+  background-color: var(--fondo-secundario);
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.1);
+  color: var(--texto-principal);
+}
+
+.carrito-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--fondo-terciario);
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid var(--verde);
+  border-radius: 10px;
+  font-weight: bold;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.carrito-item button {
+  background-color: var(--verde);
+  color: #000;
+  border: none;
+  border-radius: 6px;
+  padding: 4px 10px;
+  margin-left: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.carrito-item button:hover {
+  background-color: #00cc00;
+}
+
+#carrito-total {
+  font-size: 1.2rem;
+  margin-top: 1rem;
+  text-align: right;
+  color: var(--verde);
+}
+
+.carrito-botones,
+.carrito-acciones {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.carrito-botones button,
+.carrito-acciones button {
+  background-color: var(--verde);
+  color: black;
+  font-weight
