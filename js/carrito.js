@@ -45,7 +45,7 @@ function mostrarCarrito() {
     total += producto.precio * producto.cantidad;
   });
 
-  const envio = 4.99;
+  const envio = 12;
   totalElemento.innerHTML = `<strong>Total: ${(total + envio).toFixed(2)} € (incl. envío)</strong>`;
 }
 
