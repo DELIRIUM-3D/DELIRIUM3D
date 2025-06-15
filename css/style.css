@@ -773,5 +773,5 @@ to{transform:translateY(0);opacity:1;}}
 .carrito-botones button,
 .carrito-acciones button {
   background-color: var(--verde);
-  color: black;
+  color: green;
   font-weight
