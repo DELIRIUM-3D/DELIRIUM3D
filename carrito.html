@@ -78,8 +78,8 @@
 
     function testFactura() {
       const productos = [
-        { nombre: "Funko personalizado", cantidad: 1, precio: 24.99 },
-        { nombre: "Cartel LED", cantidad: 2, precio: 19.99 }
+        { nombre: "Funko personalizado", cantidad: 1, precio: 120 },
+        { nombre: "Cartel LED", cantidad: 2, precio: 50 }
       ];
       const total = productos.reduce((acc, p) => acc + p.precio * p.cantidad, 0);
       const envio = 12;
