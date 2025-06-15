@@ -649,7 +649,9 @@ to{transform:translateY(0);opacity:1;}}
   margin-top: 2rem;
   display: inline-block;
   color: #00ffcc;
-  text-decoration: none
+  text-decoration: none; /* ← añade el ; que faltaba aquí */
+}
+
 
 /* Estilo para botones de productos */
 .producto button {
