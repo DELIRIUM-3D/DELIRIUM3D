@@ -638,3 +638,19 @@ to{transform:translateY(0);opacity:1;}}
   color: black;
 }
 /* ------------------- FIN CARRITO ------------------- */
+/* Estilo para botones de productos */
+.producto button {
+  margin-top: 0.5rem;
+  padding: 8px 16px;
+  background-color: var(--verde);
+  color: black;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.producto button:hover {
+  background-color: #00cc00;
+}
