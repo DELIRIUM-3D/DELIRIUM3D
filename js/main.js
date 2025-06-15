@@ -60,3 +60,16 @@ function registrarClickProducto(nombre) {
 
   localStorage.setItem("productosPopulares", JSON.stringify(datos));
 }
+function añadirAlCarrito(nombre, precio) {
+  let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+
+  const existente = carrito.find(p => p.nombre === nombre);
+  if (existente) {
+    existente.cantidad += 1;
+  } else {
+    carrito.push({ nombre, precio, cantidad: 1 });
+  }
+
+  localStorage.setItem('carrito', JSON.stringify(carrito));
+  alert(`${nombre} se ha añadido al carrito.`);
+}
