@@ -646,6 +646,11 @@ to{transform:translateY(0);opacity:1;}}
   box-shadow: 0 0 8px rgba(0, 255, 0, 0.4);
 }
 
+.carrito-acciones button:hover {
+  background-color: #00cc00;
+  color: #000;
+  box-shadow: 0 0 12px rgba(0, 255, 0, 0.6);
+}
 
 .volver-btn {
   margin-top: 2rem;
