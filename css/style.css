@@ -633,16 +633,19 @@ to{transform:translateY(0);opacity:1;}}
 
 
 .carrito-acciones button {
-  background-color: #00ff00;
-  color: black;
+  background-color: #00ff00 !important;
+  color: #000 !important;
   font-weight: bold;
-  padding: 0.9rem;
-  border: none;
+  padding: 0.9rem 1.5rem;
+  border: 2px solid #00cc00;
   border-radius: 10px;
   font-size: 1rem;
   cursor: pointer;
-  transition: background 0.2s ease;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  box-shadow: 0 0 8px rgba(0, 255, 0, 0.4);
 }
+
 
 .volver-btn {
   margin-top: 2rem;
