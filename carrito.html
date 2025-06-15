@@ -70,7 +70,7 @@
             precio: item.precio
           }));
           const total = carrito.reduce((acc, item) => acc + (item.precio * item.cantidad), 0);
-          const envio = 4.99;
+          const envio = 12;
           generarFacturaPDF(productos, total + envio, envio);
         });
       }
