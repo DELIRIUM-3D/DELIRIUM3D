@@ -617,10 +617,8 @@ to{transform:translateY(0);opacity:1;}}
 
 .carrito-acciones {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 1rem;
+  flex-direction: column;
+  gap: 0.8rem;
   margin-top: 2rem;
 }
 .carrito-acciones button {
