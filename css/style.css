@@ -910,3 +910,52 @@ to{transform:translateY(0);opacity:1;}}
   border-radius: 6px;
   padding: 5px 10px;
   margin
+/* === MEJORAS VISUALES PARA CARRITO === */
+.carrito-container {
+  background-color: #121212;
+  padding: 2rem;
+  max-width: 800px;
+  margin: auto;
+  color: white;
+  border-radius: 10px;
+  box-shadow: 0 0 12px rgba(0, 255, 0, 0.15);
+}
+
+.carrito-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1e1e1e;
+  padding: 1rem;
+  border: 1px solid #00ff00;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  color: white;
+  font-size: 1rem;
+}
+
+.carrito-item button {
+  background-color: #00ff00;
+  color: black;
+  border: none;
+  border-radius: 6px;
+  padding: 5px 10px;
+  margin-left: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.carrito-item button:hover {
+  background-color: #00cc00;
+}
+
+.carrito-acciones {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  justify-content: flex-end;
+}
+
+.carrito-acciones button {
+  background-color: #00ff
