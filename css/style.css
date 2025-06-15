@@ -566,3 +566,75 @@ to{transform:translateY(0);opacity:1;}}
   border-radius: 6px;
   z-index: 9999;
 }
+/* ------------------- CARRITO ESTILOS ------------------- */
+.carrito-container {
+  padding: 2rem;
+  max-width: 800px;
+  margin: auto;
+  background-color: var(--fondo-secundario);
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.2);
+  color: var(--texto-principal);
+}
+
+.carrito-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--fondo-terciario);
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid var(--verde);
+  border-radius: 10px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.carrito-item button {
+  background-color: var(--verde);
+  color: #000;
+  border: none;
+  border-radius: 6px;
+  padding: 4px 10px;
+  margin-left: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.carrito-item button:hover {
+  background-color: #00cc00;
+  color: #000;
+}
+
+#carrito-total {
+  font-size: 1.2rem;
+  margin-top: 1rem;
+  text-align: right;
+  color: var(--verde);
+}
+
+.carrito-acciones {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.carrito-acciones button {
+  background-color: var(--verde);
+  color: black;
+  font-weight: bold;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.carrito-acciones button:hover {
+  background-color: #00cc00;
+  color: black;
+}
+/* ------------------- FIN CARRITO ------------------- */
