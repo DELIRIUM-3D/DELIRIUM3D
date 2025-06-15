@@ -566,78 +566,91 @@ to{transform:translateY(0);opacity:1;}}
   border-radius: 6px;
   z-index: 9999;
 }
-/* ------------------- CARRITO ESTILOS ------------------- */
 .carrito-container {
+  background: linear-gradient(to bottom, #1a1a1a, #0d0d0d);
   padding: 2rem;
-  max-width: 800px;
-  margin: auto;
-  background-color: var(--fondo-secundario);
+  max-width: 700px;
+  margin: 3rem auto;
   border-radius: 15px;
-  box-shadow: 0 0 15px rgba(0, 255, 0, 0.2);
-  color: var(--texto-principal);
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.25);
+  color: #fff;
+  font-family: 'Arial', sans-serif;
+  border: 2px solid #00ff00;
+}
+
+.carrito-container h2 {
+  text-align: center;
+  color: #00ff00;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 .carrito-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: var(--fondo-terciario);
+  background-color: #121212;
+  border: 2px solid #00ff00;
   padding: 1rem;
   margin-bottom: 1rem;
-  border: 1px solid var(--verde);
   border-radius: 10px;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
+  font-size: 1rem;
+}
+
+.carrito-item span {
+  color: #fff;
+  margin: 0 5px;
 }
 
 .carrito-item button {
-  background-color: var(--verde);
+  background-color: #00ff00;
   color: #000;
   border: none;
-  border-radius: 6px;
-  padding: 4px 10px;
-  margin-left: 5px;
+  padding: 0.4rem 0.7rem;
   font-weight: bold;
+  border-radius: 5px;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: background 0.2s;
 }
 
 .carrito-item button:hover {
   background-color: #00cc00;
-  color: #000;
 }
 
-#carrito-total {
-  font-size: 1.2rem;
-  margin-top: 1rem;
+.carrito-envio-total {
   text-align: right;
-  color: var(--verde);
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  color: #00ff00;
+  border-top: 1px solid #00ff00;
+  padding-top: 1rem;
 }
 
 .carrito-acciones {
-  margin-top: 2rem;
   display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 1rem;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-top: 2rem;
 }
 
 .carrito-acciones button {
-  background-color: var(--verde);
+  background-color: #00ff00;
   color: black;
   font-weight: bold;
-  padding: 10px 16px;
+  padding: 0.9rem;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
+  font-size: 1rem;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: background 0.2s ease;
 }
 
-.carrito-acciones button:hover {
-  background-color: #00cc00;
-  color: black;
-}
-/* ------------------- FIN CARRITO ------------------- */
+.volver-btn {
+  margin-top: 2rem;
+  display: inline-block;
+  color: #00ffcc;
+  text-decoration: none
+
 /* Estilo para botones de productos */
 .producto button {
   margin-top: 0.5rem;
