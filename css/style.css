@@ -566,6 +566,7 @@ to{transform:translateY(0);opacity:1;}}
   border-radius: 6px;
   z-index: 9999;
 }
+/* ------------------- CARRITO ESTILOS ------------------- */
 .carrito-container {
   background: linear-gradient(to bottom, #1a1a1a, #0d0d0d);
   padding: 2rem;
@@ -604,19 +605,7 @@ to{transform:translateY(0);opacity:1;}}
 
 .carrito-item button {
   background-color: #00ff00;
-  color: #000;
-  border: none;
-  padding: 0.4rem 0.7rem;
-  font-weight: bold;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background 0.2s;
 }
-
-.carrito-item button:hover {
-  background-color: #00cc00;
-}
-
 .carrito-envio-total {
   text-align: right;
   margin-top: 1rem;
@@ -636,7 +625,7 @@ to{transform:translateY(0);opacity:1;}}
 }
 .carrito-acciones button {
   background-color: #00ff00;
-  color: green;
+  color: black;
   font-weight: bold;
   padding: 0.9rem;
   border: none;
