@@ -775,3 +775,106 @@ to{transform:translateY(0);opacity:1;}}
   background-color: var(--verde);
   color: black;
   font-weight
+/* === VISUAL PARA BOTÓN AÑADIR AL CARRITO EN INICIO === */
+.producto button {
+  margin-top: 10px;
+  background-color: #00ff00;
+  color: #000;
+  font-weight: bold;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: background 0.3s ease;
+  cursor: pointer;
+}
+
+.producto button:hover {
+  background-color: #00cc00;
+}
+
+/* === VISUAL MEJORADO PARA CARRITO === */
+.carrito-container {
+  background-color: #121212;
+  padding: 2rem;
+  margin: auto;
+  border-radius: 10px;
+  color: white;
+  max-width: 900px;
+  box-shadow: 0 0 12px rgba(0, 255, 0, 0.2);
+}
+
+.carrito-item {
+  background-color: #1a1a1a;
+  border: 1px solid #00ff00;
+  margin: 10px 0;
+  padding: 1rem;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.carrito-item button {
+  background-color: #00ff00;
+  color: #000;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 0.95rem;
+  margin-left: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.carrito-item button:hover {
+  background-color: #00cc00;
+}
+
+#carrito-total,
+#carrito-envio {
+  font-size: 1.2rem;
+  text-align: right;
+  color: #00ff00;
+  margin-top: 1rem;
+  font-weight: bold;
+}
+
+.carrito-acciones {
+  margin-top: 2rem;
+  text-align: right;
+}
+
+.carrito-acciones button {
+  background-color: #00ff00;
+  color: black;
+  border: none;
+  padding: 10px 20px;
+  font-weight: bold;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.carrito-acciones button:hover {
+  background-color: #00cc00;
+}
+
+/* Botón de volver */
+.volver {
+  margin-top: 2rem;
+}
+
+.volver a {
+  color: #00ff00;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.volver a:hover {
+  text-decoration: underline;
+}
