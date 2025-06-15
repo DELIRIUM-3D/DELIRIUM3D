@@ -611,11 +611,26 @@ to{transform:translateY(0);opacity:1;}}
 .boton,
 .producto button {
   background-color: #00ff00;
-  color: black;
-  font-weight: bold;
-  padding: 0.6rem 1rem;
+  color: #000;
+  font-weight: 700;
+  padding: 0.6rem 1.3rem;
   border: none;
   border-radius: 8px;
+  cursor: pointer;
+  text-transform: uppercase;
+  box-shadow: 0 0 12px rgba(0, 255, 0, 0.4);
+  transition: background-color 0.3s, transform 0.2s;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.boton:hover,
+.producto button:hover {
+  background-color: #00cc00;
+  transform: scale(1.05);
+  box-shadow: 0 0 18px rgba(0, 255, 0, 0.6);
+}
+
  
 .volver {
   margin: 2rem 0;
