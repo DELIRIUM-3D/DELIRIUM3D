@@ -1,12 +1,10 @@
-// Recuperar el carrito desde localStorage o iniciar vacío
+// Recuperar carrito
 let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
-// Guardar el carrito actualizado
 function guardarCarrito() {
   localStorage.setItem("carrito", JSON.stringify(carrito));
 }
 
-// Añadir producto al carrito
 function añadirAlCarrito(nombre, precio) {
   const existente = carrito.find(p => p.nombre === nombre);
 
@@ -20,7 +18,6 @@ function añadirAlCarrito(nombre, precio) {
   alert(`${nombre} se ha añadido al carrito`);
 }
 
-// Mostrar productos en la página del carrito
 function mostrarCarrito() {
   const contenedor = document.getElementById("carrito-items");
   const totalElemento = document.getElementById("carrito-total");
@@ -37,7 +34,12 @@ function mostrarCarrito() {
     const div = document.createElement("div");
     div.classList.add("item-carrito");
     div.innerHTML = `
-      <span>${producto.nombre} x${producto.cantidad}</span>
+      <span>${producto.nombre}</span>
+      <div>
+        <button onclick="cambiarCantidad(${index}, -1)">−</button>
+        <span> ${producto.cantidad} </span>
+        <button onclick="cambiarCantidad(${index}, 1)">+</button>
+      </div>
       <span>${(producto.precio * producto.cantidad).toFixed(2)} €</span>
       <button onclick="eliminarDelCarrito(${index})">Eliminar</button>
     `;
@@ -45,25 +47,31 @@ function mostrarCarrito() {
     total += producto.precio * producto.cantidad;
   });
 
-  const envio = 12;
+  const envio = 4.99;
   totalElemento.innerHTML = `<strong>Total: ${(total + envio).toFixed(2)} € (incl. envío)</strong>`;
 }
 
-// Eliminar un producto del carrito
+function cambiarCantidad(index, cambio) {
+  carrito[index].cantidad += cambio;
+  if (carrito[index].cantidad <= 0) {
+    carrito.splice(index, 1);
+  }
+  guardarCarrito();
+  mostrarCarrito();
+}
+
 function eliminarDelCarrito(index) {
   carrito.splice(index, 1);
   guardarCarrito();
   mostrarCarrito();
 }
 
-// Vaciar todo el carrito
 function vaciarCarrito() {
   carrito = [];
   guardarCarrito();
   mostrarCarrito();
 }
 
-// Evento al cargar la página
 document.addEventListener("DOMContentLoaded", () => {
   const btnVaciar = document.getElementById("btnVaciar");
   if (btnVaciar) {
