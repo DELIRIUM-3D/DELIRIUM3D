@@ -73,3 +73,10 @@ function añadirAlCarrito(nombre, precio) {
   localStorage.setItem('carrito', JSON.stringify(carrito));
   alert(`${nombre} se ha añadido al carrito.`);
 }
+document.addEventListener("DOMContentLoaded", () => {
+  const botonModo = document.getElementById("modo-toggle");
+  botonModo.addEventListener("click", () => {
+    document.body.classList.toggle("modo-claro");
+    document.body.classList.toggle("modo-oscuro");
+  });
+});
