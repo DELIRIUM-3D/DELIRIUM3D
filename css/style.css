@@ -152,66 +152,6 @@ footer {
 .whatsapp-float img {
   height: 45px;
 }
-
-/* Botón modo claro/oscuro */
-#modo-toggle {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background-color: #0f0;
-  color: #000;
-  border: none;
-  padding: 10px;
-  border-radius: 8px;
-  cursor: pointer;
-  z-index: 1000;
-}
-
-/* ============================== */
-/* MODO CLARO — ESTILOS EXTRAS   */
-/* ============================== */
-body.modo-claro {
-  background-color: #f4f4f4;
-  color: #111;
-}
-
-body.modo-claro .producto {
-  background-color: #fff;
-  color: #000;
-  border-color: #0f0;
-}
-
-body.modo-claro .producto h4,
-body.modo-claro .producto p {
-  color: #000;
-}
-
-body.modo-claro .producto button.boton {
-  background-color: #0f0;
-  color: #000;
-}
-
-body.modo-claro nav ul li a {
-  color: #007700;
-}
-
-body.modo-claro .hero {
-  background: linear-gradient(to bottom, #ddd, #ccc);
-}
-
-body.modo-claro .hero h2,
-body.modo-claro .hero p {
-  color: #111;
-}
-
-body.modo-claro footer {
-  color: #333;
-}
-
-body.modo-claro .destacados h3,
-body.modo-claro .categorias h3 {
-  color: #111;
-}
 /* ============================== */
 /* RESPONSIVE — MÓVILES & TABLET */
 /* ============================== */
